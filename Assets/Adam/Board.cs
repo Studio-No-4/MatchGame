@@ -40,10 +40,10 @@ public class Board : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                Vector2 position = new Vector2(x - spacingX, y - spacingY);
+                Vector2 position = new(x - spacingX, y - spacingY);
                 if (arrayLayout.rows[y].row[x])
                 {
-                    manaBoard[x, y] = new Node(false, null);
+                    manaBoard[x, y] = new(false, null);
                 }
                 else
                 {
@@ -51,14 +51,14 @@ public class Board : MonoBehaviour
 
                     GameObject mana = Instantiate(manaPrefabs[randomIndex], position, Quaternion.identity);
                     mana.GetComponent<Mana>().SetIndices(x, y);
-                    manaBoard[x, y] = new Node(true, mana);
+                    manaBoard[x, y] = new(true, mana);
                 }
             }
         }
         if (checkBoard())
         {
             Debug.Log("We have Matches let's re-create the board");
-            InitializeBoard();
+            //InitializeBoard();
         } else
         {
             Debug.Log("There are no matches, time to start game.");
@@ -99,7 +99,6 @@ public class Board : MonoBehaviour
     MatchResult IsConnected(Mana mana)
     {
         List<Mana> connectedMana = new();
-        ManaType manatype = mana.manaType;
 
         connectedMana.Add(mana);
 
