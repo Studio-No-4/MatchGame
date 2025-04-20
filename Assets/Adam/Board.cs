@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MonoBehaviour 
+public class Board : MonoBehaviour
 {
+    public static Board Instance;
+
     public int width = 8;
     public int height = 8;
 
@@ -17,7 +19,6 @@ public class Board : MonoBehaviour
 
     public ArrayLayout arrayLayout;
 
-    public static Board Instance;
 
     private void Awake()
     {
