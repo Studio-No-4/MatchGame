@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     bool PlayerReady = false;
 
+    [SerializeField] private Notification MegaNotification;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerReady = false;
         print("Started Player Turn");
+        MegaNotification.Notify("Player Turn");
         while (!PlayerReady)
         {
             yield return new WaitForEndOfFrame();
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         print("Started Enemy Turn");
+        MegaNotification.Notify("Enemy Turn");
         yield return new WaitForSeconds(1f);
         print("Enemy Turn Complete");
     }
