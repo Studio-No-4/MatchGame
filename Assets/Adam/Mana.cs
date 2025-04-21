@@ -36,6 +36,10 @@ public class Mana : MonoBehaviour
     {
         hovered = true;
     }
+    void OnDrawGizmos()
+    {
+        Handles.Label(transform.position, xIndex.ToString() + ":" + yIndex.ToString());
+    }
 
     private void OnMouseExit()
     {
