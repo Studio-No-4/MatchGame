@@ -6,9 +6,9 @@ public class Node : MonoBehaviour
 {
     public bool isUsable;
 
-    public GameObject mana;
+    public Mana mana;
 
-    public Node(bool _isUsable, GameObject _mana)
+    public Node(bool _isUsable, Mana _mana)
     {
         isUsable = _isUsable;
         mana = _mana;

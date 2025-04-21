@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     public float spacingX;
     public float spacingY;
 
-    public GameObject[] manaPrefabs;
+    public Mana[] manaPrefabs;
 
     public Node[,] manaBoard;
     public GameObject manaBoardGO;
@@ -50,8 +50,8 @@ public class Board : MonoBehaviour
                 {
                     int randomIndex = Random.Range(0, manaPrefabs.Length);
 
-                    GameObject mana = Instantiate(manaPrefabs[randomIndex], position, Quaternion.identity);
-                    mana.GetComponent<Mana>().SetIndices(x, y);
+                    Mana mana = Instantiate(manaPrefabs[randomIndex], position, Quaternion.identity);
+                    mana.SetIndices(x, y);
                     manaBoard[x, y] = new(true, mana);
                 }
             }
@@ -210,6 +210,13 @@ public class Board : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void Swap(Vector2Int first, Vector2Int second)
+    {
+        (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
+        (manaBoard[second.x, second.y].mana, manaBoard[first.x, first.y].mana) = (manaBoard[first.x, first.y].mana, manaBoard[second.x, second.y].mana);
+        (manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex, manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex) = (manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex, manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.xIndex);
     }
 
 }
