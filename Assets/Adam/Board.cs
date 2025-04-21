@@ -50,7 +50,7 @@ public class Board : MonoBehaviour
                 {
                     int randomIndex = Random.Range(0, manaPrefabs.Length);
 
-                    Mana mana = Instantiate(manaPrefabs[randomIndex], position, Quaternion.identity);
+                    Mana mana = Instantiate(manaPrefabs[randomIndex], position + Vector2.up * Random.Range(100,1000)/10f, Quaternion.identity);
                     mana.targetPos = position;
                     mana.SetIndices(x, y);
                     manaBoard[x, y] = new(true, mana);
