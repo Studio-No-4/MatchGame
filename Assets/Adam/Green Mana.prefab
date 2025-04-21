@@ -102,7 +102,10 @@ MonoBehaviour:
   xIndex: 0
   yIndex: 0
   isMatched: 0
+  targetPos: {x: 0, y: 0, z: 0}
   isMoving: 0
+  dragging: 0
+  SwapSpeed: 10
 --- !u!58 &780406449101510647
 CircleCollider2D:
   m_ObjectHideFlags: 0

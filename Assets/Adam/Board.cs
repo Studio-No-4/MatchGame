@@ -51,6 +51,7 @@ public class Board : MonoBehaviour
                     int randomIndex = Random.Range(0, manaPrefabs.Length);
 
                     Mana mana = Instantiate(manaPrefabs[randomIndex], position, Quaternion.identity);
+                    mana.targetPos = position;
                     mana.SetIndices(x, y);
                     manaBoard[x, y] = new(true, mana);
                 }
@@ -214,8 +215,13 @@ public class Board : MonoBehaviour
 
     public void Swap(Vector2Int first, Vector2Int second)
     {
-        (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
+        // Set positions to target positions to prevent bugs
+        (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos);
+        // Set target positions to the other's position
+        (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
+        // Swap Mana Indexes
         (manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex, manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex) = (manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex, manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex);
+        // Swap Mana Objects
         (manaBoard[second.x, second.y].mana, manaBoard[first.x, first.y].mana) = (manaBoard[first.x, first.y].mana, manaBoard[second.x, second.y].mana);
     }
 

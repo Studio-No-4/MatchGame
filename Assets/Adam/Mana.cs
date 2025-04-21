@@ -12,13 +12,14 @@ public class Mana : MonoBehaviour
 
     public bool isMatched;
 
-    private Vector2 currentPos;
-    private Vector2 targetPos;
+    public Vector3 targetPos;
 
     public bool isMoving;
 
     private bool hovered = false;
     public bool dragging = false;
+
+    [SerializeField] private float SwapSpeed = 10f;
 
     public Mana(int _x, int _y)
     {
@@ -97,6 +98,7 @@ public class Mana : MonoBehaviour
             transform.localScale = Vector3.one * 0.09f;
             dragging = false;
         }
+        transform.Translate((targetPos - transform.position) * Time.deltaTime * SwapSpeed);
     }
 }
 

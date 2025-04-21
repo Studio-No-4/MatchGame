@@ -12,5 +12,7 @@ public class Node : MonoBehaviour
     {
         isUsable = _isUsable;
         mana = _mana;
+        //mana.transform.position = transform.position;
+        //mana.targetPos = transform.position;
     }
 }
