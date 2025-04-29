@@ -1,8 +1,8 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Board : MonoBehaviour
 {
@@ -59,18 +59,36 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        PopMatches();
+        StartCoroutine(PopCycle());
     }
 
-    public void PopMatches()
+    public IEnumerator PopCycle()
     {
-        List<Node> matchingMana = GetMatchingMana();
-        foreach (Node node in matchingMana)
+        int poppedMana = PopMatches();
+        while (poppedMana != 0)
         {
-            if (node.mana)
-            node.PopMana();
+            print("Before " + poppedMana.ToString());
+            yield return StartCoroutine(SettleMana());
+            poppedMana = PopMatches();
+            print("After " + poppedMana.ToString());
         }
-        StartCoroutine(SettleMana());
+    }
+
+    public int PopMatches()
+    {
+        int poppedMana = 0;
+        List<Node> matchingMana = GetMatchingMana();
+        if (matchingMana.Count > 0)
+        {
+            foreach (Node node in matchingMana)
+            {
+                if (node.mana)
+                    node.PopMana();
+                poppedMana++;
+                print(poppedMana);
+            }
+        }
+        return poppedMana;
         //StartCoroutine(SettleMana());
     }
 
@@ -107,6 +125,7 @@ public class Board : MonoBehaviour
                 // Check if the current node is empty
                 while (manaBoard[x,y].mana == null)
                 {
+                    print("LOOPING");
                     // Find the next mana above the empty spot
                     for (int z = y; z < manaBoard.GetLength(1) - 1; z++)
                     {
@@ -133,6 +152,7 @@ public class Board : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
             }
         }
+        yield break;
     }
 
     public void Swap(Vector2Int first, Vector2Int second)
@@ -148,7 +168,7 @@ public class Board : MonoBehaviour
             // Swap Mana Objects
             (manaBoard[second.x, second.y].mana, manaBoard[first.x, first.y].mana) = (manaBoard[first.x, first.y].mana, manaBoard[second.x, second.y].mana);
         }
-        catch (System.NullReferenceException exception)
+        catch
         {
             print(first.ToString() + " and " + second.ToString());
         }
