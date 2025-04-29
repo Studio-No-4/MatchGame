@@ -37,6 +37,7 @@ public class Mana : MonoBehaviour
     {
         hovered = true;
     }
+
     void OnDrawGizmos()
     {
         Handles.Label(transform.position, xIndex.ToString() + ":" + yIndex.ToString());
@@ -79,6 +80,7 @@ public class Mana : MonoBehaviour
                     Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex - 1, yIndex));
                 }
             }
+            StartCoroutine(Board.Instance.PopCycle());
         }
         hovered = false;
     }
@@ -98,7 +100,7 @@ public class Mana : MonoBehaviour
             transform.localScale = Vector3.one * 0.09f;
             dragging = false;
         }
-        transform.Translate((targetPos - transform.position) * Time.deltaTime * SwapSpeed);
+        transform.Translate(SwapSpeed * Time.deltaTime * (targetPos - transform.position));
     }
 }
 

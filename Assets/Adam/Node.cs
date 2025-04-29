@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class Node : MonoBehaviour
+public class Node
 {
     public bool isUsable;
 
@@ -14,5 +15,10 @@ public class Node : MonoBehaviour
         mana = _mana;
         //mana.transform.position = transform.position;
         //mana.targetPos = transform.position;
+    }
+
+    public void PopMana()
+    {
+        Object.Destroy(mana.gameObject);
     }
 }

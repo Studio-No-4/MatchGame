@@ -1,5 +1,7 @@
+
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -57,190 +59,120 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        if (checkBoard())
+        StartCoroutine(PopCycle());
+    }
+
+    public IEnumerator PopCycle()
+    {
+        int poppedMana = PopMatches();
+        while (poppedMana != 0)
         {
-            Debug.Log("We have Matches let's re-create the board");
-            //InitializeBoard();
-        } else
-        {
-            Debug.Log("There are no matches, time to start game.");
+            print("Before " + poppedMana.ToString());
+            yield return StartCoroutine(SettleMana());
+            poppedMana = PopMatches();
+            print("After " + poppedMana.ToString());
         }
     }
 
-    public bool checkBoard()
+    public int PopMatches()
     {
-        Debug.Log("Checking Board");
-        bool hasMatched = false;
-
-        List<Mana> manaToRemove = new();
-
-        for (int x = 0; x < width; x++)
+        int poppedMana = 0;
+        List<Node> matchingMana = GetMatchingMana();
+        if (matchingMana.Count > 0)
         {
-            for(int y = 0; y < height; y++)
+            foreach (Node node in matchingMana)
             {
-                if (manaBoard[x, y].isUsable)
+                if (node.mana)
+                    node.PopMana();
+                poppedMana++;
+                print(poppedMana);
+            }
+        }
+        return poppedMana;
+        //StartCoroutine(SettleMana());
+    }
+
+    public List<Node> GetMatchingMana()
+    {
+        List<Node> matchingMana = new();
+        // Horizontal Matches
+        print(manaBoard.GetLength(0).ToString() + manaBoard.GetLength(1).ToString());
+        for (int x = 0; x < manaBoard.GetLength(0)-2; x++)
+        {
+            for (int y = 0; y < manaBoard.GetLength(1); y++)
+            {
+                if (manaBoard[x,y].mana && manaBoard[x+1, y].mana && manaBoard[x + 2, y].mana)
+                if (manaBoard[x,y].mana.manaType == manaBoard[x+1,y].mana.manaType && manaBoard[x + 1, y].mana.manaType == manaBoard[x+2, y].mana.manaType)
                 {
-                    Mana mana = manaBoard[x, y].mana.GetComponent<Mana>();
-                    if (!mana.isMatched)
+                    matchingMana.Add(manaBoard[x, y]);
+                    matchingMana.Add(manaBoard[x + 1, y]);
+                    matchingMana.Add(manaBoard[x + 2, y]);
+                }
+            }
+        }
+        return matchingMana;
+    }
+
+    IEnumerator SettleMana()
+    {
+        print("Settling Mana");
+        // Iterate from left to right, bottom to top
+        for (int y = 0; y < manaBoard.GetLength(1); y++)
+        {
+            for (int x = 0; x < manaBoard.GetLength(0); x++)
+            {
+                Debug.DrawLine(new Vector2(x-spacingX, y-spacingY), new Vector2(x - spacingX, y - spacingY - 1), Color.yellow, 1f);
+                // Check if the current node is empty
+                while (manaBoard[x,y].mana == null)
+                {
+                    print("LOOPING");
+                    // Find the next mana above the empty spot
+                    for (int z = y; z < manaBoard.GetLength(1) - 1; z++)
                     {
-                        MatchResult matchedMana = IsConnected(mana);
-                        if (matchedMana.connectedMana.Count >= 3)
-                        {
-                            manaToRemove.AddRange(matchedMana.connectedMana);
-                            foreach (Mana mp in matchedMana.connectedMana)
-                                mp.isMatched = true;
-                            hasMatched = true;
-                        }
+                        //if (manaBoard[x, z].mana != null)
+                        //{
+                            // Move all mana above the empty spot downwards
+
+                            manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
+                            manaBoard[x, z].mana.targetPos = new Vector2(x-spacingX, z - spacingY);
+                            manaBoard[x, z].mana.SetIndices(x, z);
+                            manaBoard[x, z+1].mana = null;
+                        //}
                     }
+                    int randomIndex = Random.Range(0, manaPrefabs.Length);
+
+                    Vector2 position = new (x, manaBoard.GetLength(1)-1);
+                    Mana mana = Instantiate(manaPrefabs[randomIndex], new Vector2(x - spacingX, manaBoard.GetLength(1) - spacingY), Quaternion.identity);
+                    mana.targetPos = position - new Vector2(spacingX, spacingY);
+                    mana.SetIndices(x, (int)position.y);
+                    manaBoard[x, (int)position.y] = new(true, mana);
+                    //yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.05f);
                 }
+                yield return new WaitForSeconds(0.01f);
             }
         }
-        return hasMatched;
-    }
-
-    MatchResult IsConnected(Mana mana)
-    {
-        List<Mana> connectedMana = new();
-
-        connectedMana.Add(mana);
-
-        CheckDirection(mana, new Vector2Int(1, 0), connectedMana);
-
-        CheckDirection(mana, new Vector2Int(-1, 0), connectedMana);
-
-        if (connectedMana.Count == 3)
-        {
-            Debug.Log("I have a normal horizontal match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.Horizontal
-            };
-        } //More than 3
-        else if (connectedMana.Count > 3)
-        {
-            Debug.Log("I have a Long Horizontal match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.LongHorizontal
-            };
-        } //more than 4
-        /*else if (connectedMana.Count > 4)
-        {
-            Debug.Log("I have a Super Horizontal match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.SuperHorizontal
-            };
-        }*/
-
-        connectedMana.Clear();
-
-        connectedMana.Add(mana);
-
-        CheckDirection(mana, new Vector2Int(0, 1), connectedMana);
-
-        CheckDirection(mana, new Vector2Int(0, -1), connectedMana);
-
-        if (connectedMana.Count == 3)
-        {
-            Debug.Log("I have a normal Vertical match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.Vertical
-            };
-        } // more than 3
-        else if (connectedMana.Count > 3)
-        {
-            Debug.Log("I have a Long Vertical match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.LongVertical
-            };
-        } // more than 4
-        /*else if (connectedMana.Count > 4)
-        {
-            Debug.Log("I have a Super Vertical match, the color of my match is:" + connectedMana[0].manaType);
-
-            return new MatchResult
-            {
-                connectedMana = connectedMana,
-                direction = MatchDirection.SuperVertical
-            };
-        }*/
-        else
-        {
-            return new MatchResult { connectedMana = connectedMana, direction = MatchDirection.None };
-        }
-    }
-
-    void CheckDirection(Mana mana, Vector2Int direction, List<Mana> connectedMana)
-    {
-        ManaType manatype = mana.manaType;
-        int x = mana.xIndex + direction.x;
-        int y = mana.yIndex + direction.y;
-
-        while (x >= 0 && x < width && y >= 0 && y < height)
-        {
-            if (manaBoard[x,y].isUsable)
-            {
-                Mana neighbourMana = manaBoard[x, y].mana.GetComponent<Mana>();
-
-                if(!neighbourMana.isMatched && neighbourMana.manaType == manatype)
-                {
-                    connectedMana.Add((Mana)neighbourMana);
-                    x += direction.x;
-                    y += direction.y;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
+        yield break;
     }
 
     public void Swap(Vector2Int first, Vector2Int second)
     {
-        // Set positions to target positions to prevent bugs
-        (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos);
-        // Set target positions to the other's position
-        (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
-        // Swap Mana Indexes
-        (manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex, manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex) = (manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex, manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex);
-        // Swap Mana Objects
-        (manaBoard[second.x, second.y].mana, manaBoard[first.x, first.y].mana) = (manaBoard[first.x, first.y].mana, manaBoard[second.x, second.y].mana);
+        try
+        {
+            // Set positions to target positions to prevent bugs
+            (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos);
+            // Set target positions to the other's position
+            (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
+            // Swap Mana Indexes
+            (manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex, manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex) = (manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex, manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex);
+            // Swap Mana Objects
+            (manaBoard[second.x, second.y].mana, manaBoard[first.x, first.y].mana) = (manaBoard[first.x, first.y].mana, manaBoard[second.x, second.y].mana);
+        }
+        catch
+        {
+            print(first.ToString() + " and " + second.ToString());
+        }
     }
 
 }
 
-
-public class MatchResult
-{
-    public List<Mana> connectedMana;
-    public MatchDirection direction;
-}
-
-public enum MatchDirection
-{
-    Vertical,
-    Horizontal,
-    LongVertical,
-    LongHorizontal,
-    SuperVertical,
-    SuperHorizontal,
-    None
-}
