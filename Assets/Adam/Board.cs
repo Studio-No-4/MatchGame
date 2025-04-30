@@ -14,7 +14,7 @@ public class Board : MonoBehaviour
     public float spacingX;
     public float spacingY;
 
-    public Mana[] manaPrefabs;
+    public Mana ManaPrefab;
 
     public Node[,] manaBoard;
     public GameObject manaBoardGO;
@@ -50,9 +50,10 @@ public class Board : MonoBehaviour
                 }
                 else
                 {
-                    int randomIndex = Random.Range(0, manaPrefabs.Length);
+                    int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
 
-                    Mana mana = Instantiate(manaPrefabs[randomIndex], position + Vector2.up * Random.Range(100,1000)/10f, Quaternion.identity);
+                    Mana mana = Instantiate(ManaPrefab, position + Vector2.up * Random.Range(100,1000)/10f, Quaternion.identity);
+                    mana.SetType(randomIndex);
                     mana.targetPos = position;
                     mana.SetIndices(x, y);
                     manaBoard[x, y] = new(true, mana);
@@ -138,10 +139,11 @@ public class Board : MonoBehaviour
                             manaBoard[x, z+1].mana = null;
                         //}
                     }
-                    int randomIndex = Random.Range(0, manaPrefabs.Length);
+                    int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
 
                     Vector2 position = new (x, manaBoard.GetLength(1)-1);
-                    Mana mana = Instantiate(manaPrefabs[randomIndex], new Vector2(x - spacingX, manaBoard.GetLength(1) - spacingY), Quaternion.identity);
+                    Mana mana = Instantiate(ManaPrefab, new Vector2(x - spacingX, manaBoard.GetLength(1) - spacingY), Quaternion.identity);
+                    ManaPrefab.SetType(randomIndex);
                     mana.targetPos = position - new Vector2(spacingX, spacingY);
                     mana.SetIndices(x, (int)position.y);
                     manaBoard[x, (int)position.y] = new(true, mana);

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Mana : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer sprite;
+
     public ManaType manaType;
 
     public int xIndex;
@@ -41,6 +43,13 @@ public class Mana : MonoBehaviour
     void OnDrawGizmos()
     {
         Handles.Label(transform.position, xIndex.ToString() + ":" + yIndex.ToString());
+    }
+
+    public void SetType(int type)
+    {
+        manaType = (ManaType)type;
+        // Sets the image according to the given type
+        sprite.sprite = GlobalData.Instance.ElementIcons[type];
     }
 
     private void OnMouseExit()
