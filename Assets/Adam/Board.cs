@@ -69,7 +69,7 @@ public class Board : MonoBehaviour
         {
             print("Before " + poppedMana.ToString());
             yield return StartCoroutine(SettleMana());
-            poppedMana = PopMatches();
+            //poppedMana = PopMatches();
             print("After " + poppedMana.ToString());
         }
     }
@@ -96,7 +96,6 @@ public class Board : MonoBehaviour
     {
         List<Node> matchingMana = new();
         // Horizontal Matches
-        print(manaBoard.GetLength(0).ToString() + manaBoard.GetLength(1).ToString());
         for (int x = 0; x < manaBoard.GetLength(0)-2; x++)
         {
             for (int y = 0; y < manaBoard.GetLength(1); y++)
@@ -146,12 +145,13 @@ public class Board : MonoBehaviour
                     mana.targetPos = position - new Vector2(spacingX, spacingY);
                     mana.SetIndices(x, (int)position.y);
                     manaBoard[x, (int)position.y] = new(true, mana);
-                    //yield return new WaitForSeconds(0.5f);
-                    yield return new WaitForSeconds(0.05f);
+                    //yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.01f);
             }
         }
+        yield return new WaitForSeconds(0.01f);
+        StartCoroutine(PopCycle());
         yield break;
     }
 
