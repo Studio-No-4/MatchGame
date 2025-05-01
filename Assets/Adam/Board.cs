@@ -60,20 +60,7 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        StartCoroutine(PopCycle());
-    }
-
-    public IEnumerator PopCycle()
-    {
-        int poppedMana = PopMatches();
-        while (poppedMana != 0)
-        {
-            print("Before " + poppedMana.ToString());
-            yield return new WaitForSeconds(0.1f);
-            yield return StartCoroutine(SettleMana());
-            //poppedMana = PopMatches();
-            print("After " + poppedMana.ToString());
-        }
+        PopMatches();
     }
 
     public int PopMatches()
@@ -90,8 +77,8 @@ public class Board : MonoBehaviour
                 print(poppedMana);
             }
         }
+        if (poppedMana > 0) StartCoroutine(SettleMana());
         return poppedMana;
-        //StartCoroutine(SettleMana());
     }
 
     public List<Node> GetMatchingMana()
@@ -144,15 +131,10 @@ public class Board : MonoBehaviour
                     // Find the next mana above the empty spot
                     for (int z = y; z < manaBoard.GetLength(1) - 1; z++)
                     {
-                        //if (manaBoard[x, z].mana != null)
-                        //{
-                            // Move all mana above the empty spot downwards
-
-                            manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
-                            manaBoard[x, z].mana.targetPos = new Vector2(x-spacingX, z - spacingY);
-                            manaBoard[x, z].mana.SetIndices(x, z);
-                            manaBoard[x, z+1].mana = null;
-                        //}
+                        manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
+                        manaBoard[x, z].mana.targetPos = new Vector2(x-spacingX, z - spacingY);
+                        manaBoard[x, z].mana.SetIndices(x, z);
+                        manaBoard[x, z+1].mana = null;
                     }
                     int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
 
@@ -162,13 +144,12 @@ public class Board : MonoBehaviour
                     mana.targetPos = position - new Vector2(spacingX, spacingY);
                     mana.SetIndices(x, (int)position.y);
                     manaBoard[x, (int)position.y] = new(true, mana);
-                    //yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.01f);
             }
         }
         yield return new WaitForSeconds(0.01f);
-        StartCoroutine(PopCycle());
+        PopMatches();
         yield break;
     }
 

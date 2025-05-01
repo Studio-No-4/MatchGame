@@ -89,7 +89,7 @@ public class Mana : MonoBehaviour
                     Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex - 1, yIndex));
                 }
             }
-            StartCoroutine(Board.Instance.PopCycle());
+            Board.Instance.PopMatches();
         }
         hovered = false;
     }
