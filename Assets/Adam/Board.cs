@@ -69,6 +69,7 @@ public class Board : MonoBehaviour
         while (poppedMana != 0)
         {
             print("Before " + poppedMana.ToString());
+            yield return new WaitForSeconds(0.1f);
             yield return StartCoroutine(SettleMana());
             //poppedMana = PopMatches();
             print("After " + poppedMana.ToString());
@@ -108,6 +109,20 @@ public class Board : MonoBehaviour
                     matchingMana.Add(manaBoard[x + 1, y]);
                     matchingMana.Add(manaBoard[x + 2, y]);
                 }
+            }
+        }
+        // Vertical Matches
+        for (int x = 0; x < manaBoard.GetLength(0); x++)
+        {
+            for (int y = 0; y < manaBoard.GetLength(1) - 2; y++)
+            {
+                if (manaBoard[x, y].mana && manaBoard[x, y + 1].mana && manaBoard[x, y + 2].mana)
+                    if (manaBoard[x, y].mana.manaType == manaBoard[x, y + 1].mana.manaType && manaBoard[x, y + 1].mana.manaType == manaBoard[x, y + 2].mana.manaType)
+                    {
+                        matchingMana.Add(manaBoard[x, y]);
+                        matchingMana.Add(manaBoard[x, y + 1]);
+                        matchingMana.Add(manaBoard[x, y + 2]);
+                    }
             }
         }
         return matchingMana;
