@@ -127,14 +127,17 @@ public class Board : MonoBehaviour
                 // Check if the current node is empty
                 while (manaBoard[x,y].mana == null)
                 {
-                    print("LOOPING");
+                    //print("LOOPING");
                     // Find the next mana above the empty spot
                     for (int z = y; z < manaBoard.GetLength(1) - 1; z++)
                     {
-                        manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
-                        manaBoard[x, z].mana.targetPos = new Vector2(x-spacingX, z - spacingY);
-                        manaBoard[x, z].mana.SetIndices(x, z);
-                        manaBoard[x, z+1].mana = null;
+                        if (manaBoard[x, z+1].mana != null)
+                        {
+                            manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
+                            manaBoard[x, z].mana.targetPos = new Vector2(x - spacingX, z - spacingY);
+                            manaBoard[x, z].mana.SetIndices(x, z);
+                            manaBoard[x, z + 1].mana = null;
+                        }
                     }
                     int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
 

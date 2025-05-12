@@ -16,10 +16,10 @@ public class Grid : MonoBehaviour
             newOrb.Element = (Orb.ElementType)Random.Range(0, 6);
             OrbElements.Add(newOrb);
         }
-        checkMatch();
+        CheckMatch();
     }
 
-    void checkMatch()
+    void CheckMatch()
     {
         for (int i = 0; i < OrbElements.Count-2; i++) { 
         
