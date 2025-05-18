@@ -118,7 +118,7 @@ public enum ManaType
     Red,
     Green, 
     Blue,
-    white,
-    black,
+    White,
+    Black,
     Skull
 }

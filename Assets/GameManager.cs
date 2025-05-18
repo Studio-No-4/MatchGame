@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
 
+
+    public Dictionary<ManaType, int> PlayerMana = new();
+
     private void Awake()
     {
         Instance = this;
@@ -18,6 +21,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerMana[ManaType.Red] = 0;
+        PlayerMana[ManaType.Green] = 0;
+        PlayerMana[ManaType.Blue] = 0;
+        PlayerMana[ManaType.White] = 0;
+        PlayerMana[ManaType.Black] = 0;
+        PlayerMana[ManaType.Skull] = 0;
         StartCoroutine(TurnRoutine());
     }
 
