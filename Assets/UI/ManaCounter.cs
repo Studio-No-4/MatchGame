@@ -21,7 +21,7 @@ public class ManaCounter : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             Texts[i].text = GameManager.Instance.PlayerMana[(ManaType)i].ToString();
-            Sliders[i].fillAmount = 10f / GameManager.Instance.PlayerMana[(ManaType)i];
+            Sliders[i].fillAmount = (float)GameManager.Instance.PlayerMana[(ManaType)i] / 10f;
         }
     }
 }
