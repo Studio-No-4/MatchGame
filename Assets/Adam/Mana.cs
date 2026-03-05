@@ -14,7 +14,7 @@ public class Mana : MonoBehaviour
 
     public bool isMatched;
 
-    public Vector3 targetPos;
+    public Vector3 TargetPos;
 
     public bool isMoving;
 
@@ -109,7 +109,7 @@ public class Mana : MonoBehaviour
             transform.localScale = Vector3.one * 0.09f;
             dragging = false;
         }
-        transform.Translate(SwapSpeed * Time.deltaTime * (targetPos - transform.position));
+        transform.Translate(SwapSpeed * Time.deltaTime * (TargetPos - transform.position));
     }
 }
 

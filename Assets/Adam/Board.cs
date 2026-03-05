@@ -19,9 +19,6 @@ public class Board : MonoBehaviour
     public Node[,] manaBoard;
     public GameObject manaBoardGO;
 
-    public ArrayLayout arrayLayout;
-
-
     private void Awake()
     {
         Instance = this;
@@ -44,20 +41,13 @@ public class Board : MonoBehaviour
             for (int x = 0; x < width; x++)
             {
                 Vector2 position = new(x - spacingX, y - spacingY);
-                if (arrayLayout.rows[y].row[x])
-                {
-                    manaBoard[x, y] = new(false, null);
-                }
-                else
-                {
-                    int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
+                int randomIndex = Random.Range(0, GlobalData.Instance.ElementIcons.Count);
 
-                    Mana mana = Instantiate(ManaPrefab, position + Vector2.up * Random.Range(100,1000)/10f, Quaternion.identity);
-                    mana.SetType(randomIndex);
-                    mana.targetPos = position;
-                    mana.SetIndices(x, y);
-                    manaBoard[x, y] = new(true, mana);
-                }
+                Mana mana = Instantiate(ManaPrefab, position + Vector2.up * Random.Range(100,1000)/10f, Quaternion.identity);
+                mana.SetType(randomIndex);
+                mana.TargetPos = position;
+                mana.SetIndices(x, y);
+                manaBoard[x, y] = new(true, mana);
             }
         }
         PopMatches();
@@ -134,7 +124,7 @@ public class Board : MonoBehaviour
                         if (manaBoard[x, z+1].mana != null)
                         {
                             manaBoard[x, z].mana = manaBoard[x, z + 1].mana;
-                            manaBoard[x, z].mana.targetPos = new Vector2(x - spacingX, z - spacingY);
+                            manaBoard[x, z].mana.TargetPos = new Vector2(x - spacingX, z - spacingY);
                             manaBoard[x, z].mana.SetIndices(x, z);
                             manaBoard[x, z + 1].mana = null;
                         }
@@ -144,7 +134,7 @@ public class Board : MonoBehaviour
                     Vector2 position = new (x, manaBoard.GetLength(1)-1);
                     Mana mana = Instantiate(ManaPrefab, new Vector2(x - spacingX, manaBoard.GetLength(1) - spacingY), Quaternion.identity);
                     ManaPrefab.SetType(randomIndex);
-                    mana.targetPos = position - new Vector2(spacingX, spacingY);
+                    mana.TargetPos = position - new Vector2(spacingX, spacingY);
                     mana.SetIndices(x, (int)position.y);
                     manaBoard[x, (int)position.y] = new(true, mana);
                 }
@@ -161,9 +151,9 @@ public class Board : MonoBehaviour
         try
         {
             // Set positions to target positions to prevent bugs
-            (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos);
+            (manaBoard[second.x, second.y].mana.transform.position, manaBoard[first.x, first.y].mana.transform.position) = (manaBoard[second.x, second.y].mana.TargetPos, manaBoard[first.x, first.y].mana.TargetPos);
             // Set target positions to the other's position
-            (manaBoard[second.x, second.y].mana.targetPos, manaBoard[first.x, first.y].mana.targetPos) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
+            (manaBoard[second.x, second.y].mana.TargetPos, manaBoard[first.x, first.y].mana.TargetPos) = (manaBoard[first.x, first.y].mana.transform.position, manaBoard[second.x, second.y].mana.transform.position);
             // Swap Mana Indexes
             (manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex, manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex) = (manaBoard[second.x, second.y].mana.xIndex, manaBoard[second.x, second.y].mana.yIndex, manaBoard[first.x, first.y].mana.xIndex, manaBoard[first.x, first.y].mana.yIndex);
             // Swap Mana Objects

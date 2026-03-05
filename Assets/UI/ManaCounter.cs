@@ -6,13 +6,25 @@ using UnityEngine.UI;
 
 public class ManaCounter : MonoBehaviour
 {
+    public static ManaCounter Instance;
     [SerializeField] private List<TMP_Text> Texts;
-    [SerializeField] private List<Image> Sliders;
+    public List<Image> Sliders;
+
+    [SerializeField] private float Speed = 4f;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < 6; i++)
+        {
+            Texts[i].text = GameManager.Instance.PlayerMana[(ManaType)i].ToString();
+            Sliders[i].fillAmount = (float)GameManager.Instance.PlayerMana[(ManaType)i] / 10f;
+        }
     }
 
     // Update is called once per frame
@@ -21,7 +33,7 @@ public class ManaCounter : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             Texts[i].text = GameManager.Instance.PlayerMana[(ManaType)i].ToString();
-            Sliders[i].fillAmount = (float)GameManager.Instance.PlayerMana[(ManaType)i] / 10f;
+            Sliders[i].fillAmount = Mathf.Lerp(Sliders[i].fillAmount, (float)GameManager.Instance.PlayerMana[(ManaType)i] / 10f, Time.deltaTime * Speed);
         }
     }
 }

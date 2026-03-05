@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7acc22659163dc844b1e46805c89eb71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c6fb197c39de6a41b9953c9867b8abe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2139100126488575929}
-  manaType: 0
+  manaType: 3
   xIndex: 0
   yIndex: 0
   isMatched: 0
-  targetPos: {x: 0, y: 0, z: 0}
+  TargetPos: {x: 0, y: 0, z: 0}
   isMoving: 0
   dragging: 0
   SwapSpeed: 10
