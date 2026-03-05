@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
 
+    public Health Enemy;
 
     public Dictionary<ManaType, int> PlayerMana = new();
 
