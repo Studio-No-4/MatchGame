@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public static event Action<int> OnTurnChange;
+    private static int _turn = 1;
+    public static int Turn
+    {
+        get => _turn;
+        set
+        {
+            _turn = value;
+            OnTurnChange?.Invoke(_turn);
+        }
+    }
+
     bool PlayerReady = false;
+    public bool GridLocked = false;
 
     public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
@@ -52,6 +67,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         print("Player Turn Complete");
+        Turn++;
     }
 
     IEnumerator EnemyTurn()
@@ -60,6 +76,7 @@ public class GameManager : MonoBehaviour
         MegaNotification.Notify("Enemy Turn");
         yield return new WaitForSeconds(1f);
         print("Enemy Turn Complete");
+        Turn++;
     }
 
     // Update is called once per frame
