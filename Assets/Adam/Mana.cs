@@ -89,24 +89,37 @@ public class Mana : MonoBehaviour
                     Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex - 1, yIndex));
                 }
             }
+            // Detect if match was made, otherwise undo move
+            // if (match was made)
+            //{
             Board.Instance.PopMatches();
+            // Lock the grid so no more matches can be made, unless it was a match-4
+            GameManager.Instance.GridLocked = true;
+            //}
         }
         hovered = false;
     }
 
     private void Update()
     {
-        if (hovered)
+        if (!GameManager.Instance.GridLocked)
         {
-            transform.localScale = Vector3.one * 0.1f;
-            if (Input.GetMouseButtonDown(0))
+            if (hovered)
             {
-                dragging = true;
+                transform.localScale = Vector3.one * 0.1f;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    dragging = true;
+                }
+            }
+            else
+            {
+                transform.localScale = Vector3.one * 0.09f;
+                dragging = false;
             }
         }
         else
         {
-            transform.localScale = Vector3.one * 0.09f;
             dragging = false;
         }
         transform.Translate(SwapSpeed * Time.deltaTime * (TargetPos - transform.position));
