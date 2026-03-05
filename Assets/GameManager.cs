@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     bool PlayerReady = false;
 
+    public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
+
+
+    public Dictionary<ManaType, int> PlayerMana = new();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerMana[ManaType.Red] = 0;
+        PlayerMana[ManaType.Green] = 0;
+        PlayerMana[ManaType.Blue] = 0;
+        PlayerMana[ManaType.White] = 0;
+        PlayerMana[ManaType.Black] = 0;
+        PlayerMana[ManaType.Skull] = 0;
         StartCoroutine(TurnRoutine());
     }
 

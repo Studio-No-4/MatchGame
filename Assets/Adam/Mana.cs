@@ -21,7 +21,7 @@ public class Mana : MonoBehaviour
     private bool hovered = false;
     public bool dragging = false;
 
-    [SerializeField] private float SwapSpeed = 10f;
+    public float SwapSpeed = 10f;
 
     public Mana(int _x, int _y)
     {
@@ -118,7 +118,7 @@ public enum ManaType
     Red,
     Green, 
     Blue,
-    white,
-    black,
+    White,
+    Black,
     Skull
 }

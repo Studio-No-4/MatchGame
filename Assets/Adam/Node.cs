@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,12 +14,22 @@ public class Node
     {
         isUsable = _isUsable;
         mana = _mana;
-        //mana.transform.position = transform.position;
-        //mana.targetPos = transform.position;
     }
 
     public void PopMana()
     {
-        Object.Destroy(mana.gameObject);
+        mana.targetPos = GameManager.Instance.ManaCollection.position;
+        mana.SwapSpeed -= Random.Range(0, 50) / 10f;
+        if (GameManager.Instance.PlayerMana.ContainsKey(mana.manaType))
+        {
+            GameManager.Instance.PlayerMana[mana.manaType] += 1;
+        }
+        else
+        {
+            GameManager.Instance.PlayerMana[mana.manaType] = 1;
+        }
+        // Arbitrary 1 second delay currently, should fix later
+        Object.Destroy(mana.gameObject, 1f);
+        mana = null;
     }
 }
