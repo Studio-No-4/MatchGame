@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         PlayerReady = false;
+        GridLocked = false;
         print("Started Player Turn");
         MegaNotification.Notify("Player Turn");
         while (!PlayerReady)
@@ -77,6 +78,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         print("Enemy Turn Complete");
         Turn++;
+    }
+
+    public void ReadyPlayer()
+    {
+        PlayerReady = true;
     }
 
     // Update is called once per frame

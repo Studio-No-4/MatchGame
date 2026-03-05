@@ -102,24 +102,17 @@ public class Mana : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.GridLocked)
+        if (hovered && !GameManager.Instance.GridLocked)
         {
-            if (hovered)
+            transform.localScale = Vector3.one * 0.1f;
+            if (Input.GetMouseButtonDown(0))
             {
-                transform.localScale = Vector3.one * 0.1f;
-                if (Input.GetMouseButtonDown(0))
-                {
-                    dragging = true;
-                }
-            }
-            else
-            {
-                transform.localScale = Vector3.one * 0.09f;
-                dragging = false;
+                dragging = true;
             }
         }
         else
         {
+            transform.localScale = Vector3.one * 0.09f;
             dragging = false;
         }
         transform.Translate(SwapSpeed * Time.deltaTime * (TargetPos - transform.position));
