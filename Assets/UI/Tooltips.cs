@@ -1,24 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode()]
 public class Tooltips : MonoBehaviour
 {
-    public Text Title;
-    public Image SpellImage;
-    public Text Description;
-    public int Mana;
+    public TextMeshProUGUI headerField;
 
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI contentField;
+
+    public LayoutElement layoutElement;
+
+    public int characterWrapLimit;
+
+    public RectTransform rectTransform;
+
+    private void Awake()
     {
-        
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetText(string content, string header = "")
     {
-        
+        if (string.IsNullOrEmpty(header))
+        {
+            headerField.gameObject.SetActive(false);
+        }
+        else
+        {
+            headerField.gameObject.SetActive(true);
+            headerField.text = header;
+        }
+
+        contentField.text = content;
+
+        int headerLength = headerField.text.Length;
+        int contentLength = contentField.text.Length;
+
+        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
     }
+    // Using only if want to view size in the editor
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+        int headerLength = headerField.text.Length;
+        int contentLength = contentField.text.Length;
+
+        layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        }
+
+        Vector2 position = Input.mousePosition;
+
+        float pivotX = position.x / Screen.width;
+        float pivotY = position.y / Screen.height;
+
+
+        rectTransform.pivot = new Vector2(pivotX, pivotY);
+        transform.position = position;
+
+    }
+
+
+
+
 }
