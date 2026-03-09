@@ -3820,7 +3820,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2035494353}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NextTurn
+        m_MethodName: ReadyPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
