@@ -6213,6 +6213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GridLocked: 0
+  GlobalData: {fileID: 11400000, guid: 5f6f8ab7aa7f69b49a04981f7fc1e662, type: 2}
   ManaCollection: {fileID: 1811855453}
   MegaNotification: {fileID: 19691203}
   Enemy: {fileID: 790580252}

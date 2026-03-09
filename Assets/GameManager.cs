@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     bool PlayerReady = false;
     public bool GridLocked = false;
 
+    public GlobalData GlobalData;
+
     public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if (GlobalData && !GlobalData.Instance) GlobalData.Instance = GlobalData;
     }
 
     // Start is called before the first frame update
