@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static event Action<int> OnTurnChange;
+    public static event System.Action<int> OnTurnChange;
     private static int _turn = 1;
     public static int Turn
     {
@@ -78,7 +77,40 @@ public class GameManager : MonoBehaviour
     {
         print("Started Enemy Turn");
         MegaNotification.Notify("Enemy Turn");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.7f);
+        List<Vector4> validMoves = Board.Instance.GetAllValidMoves();
+        foreach (Vector4 move in validMoves)
+        {
+            print("VALID MOVE: " + move.ToString());
+        }
+        Vector4 selectedMove = validMoves[Random.Range(0, validMoves.Count)];
+        Vector2Int start = new((int)selectedMove.x, (int)selectedMove.y);//new(Random.Range(0, 8), Random.Range(0, 8));
+        Vector2Int end = new((int)selectedMove.z, (int)selectedMove.w);/*start;
+        if (Random.Range(0, 100) < 50)
+        {
+            if (Random.Range(0, 100) < 50)
+            {
+                end += Vector2Int.up;
+            }
+            else
+            {
+                end += Vector2Int.down;
+            }
+        }
+        else
+        {
+            if (Random.Range(0, 100) < 50)
+            {
+                end += Vector2Int.right;
+            }
+            else
+            {
+                end += Vector2Int.left;
+            }
+        }*/
+        Board.Instance.Swap(start, end);
+        Board.Instance.PopMatches();
+        yield return new WaitForSeconds(.3f);
         print("Enemy Turn Complete");
         Turn++;
     }
