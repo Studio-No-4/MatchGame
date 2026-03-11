@@ -89,12 +89,12 @@ public class Mana : MonoBehaviour
                     Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex - 1, yIndex));
                 }
             }
+            GameManager.Instance.GridLocked = true;
             // Detect if match was made, otherwise undo move
             // if (match was made)
             //{
-            Board.Instance.PopMatches();
+            Board.Instance.Invoke(nameof(Board.Instance.PopMatches), 0.1f);
             // Lock the grid so no more matches can be made, unless it was a match-4
-            GameManager.Instance.GridLocked = true;
             //}
         }
         hovered = false;
