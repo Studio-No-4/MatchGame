@@ -118,11 +118,19 @@ public class Board : MonoBehaviour
             }
         }*/
 
+        ManaType type;
         // If End is in bounds
-        if (end.x >= 8 || end.x < 0 || end.y >= 8 || end.y < 0) return false;
+        try
+        {
+            if (end.x >= 8 || end.x < 0 || end.y >= 8 || end.y < 0) return false;
 
-        // Save mana type of Start to reduce code
-        ManaType type = manaBoard[start.x, start.y].mana.manaType;
+            // Save mana type of Start to reduce code
+            type = manaBoard[start.x, start.y].mana.manaType;
+        }
+        catch
+        {
+            return false;
+        }
 
         // If start and end match, invalid
         if (manaBoard[end.x, end.y].mana.manaType == type) return false;
@@ -149,6 +157,11 @@ public class Board : MonoBehaviour
                 if (end.x - direction.y * 2 >= 0 && end.y - direction.x * 2 >= 0)
                     if (manaBoard[end.x - direction.y * 2, end.y - direction.x * 2].mana.manaType == type) return true;
             }
+            if (manaBoard[end.x + direction.x, end.y + direction.y].mana.manaType == type)
+            {
+                if (end.x + direction.x * 2 < 8 && end.y + direction.y * 2 < 8)
+                    if (manaBoard[end.x + direction.x * 2, end.y + direction.y * 2].mana.manaType == type) return true;
+            }
             return false;
         }
         catch
@@ -159,7 +172,7 @@ public class Board : MonoBehaviour
 
     public List<Vector4> GetAllValidMoves()
     {
-        Vector2Int[] directions = { new(0, 1), new(0, -1), new(1, 0), new(-1, 0) };
+        Vector2Int[] directions = { new(0, 1), new(1, 0), new(0, -1), new(-1, 0) };
         List<Vector4> ValidMoves = new();
 
         for (int i = 0; i < 8; i++)
@@ -272,5 +285,23 @@ public class Board : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        List<Vector4> validMoves = GetAllValidMoves();
+        foreach (Vector4 move in validMoves)
+        {
+            Vector3 start = manaBoard[(int)move.x, (int)move.y].mana.transform.position;
+            Vector3 end = manaBoard[(int)move.z, (int)move.w].mana.transform.position;
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(start, .5f);
+
+            Gizmos.color = Color.red + Color.yellow;
+            Gizmos.DrawLine(start, end);
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(end, .5f);
+        }
+    }
 }
 
