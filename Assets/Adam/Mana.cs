@@ -59,19 +59,22 @@ public class Mana : MonoBehaviour
             print("Moved " + gameObject.name);
             Camera mainCamera = Camera.main;
             Vector3 direction = Input.mousePosition - mainCamera.WorldToScreenPoint(transform.position);
+            direction.Normalize();
+            Vector2Int start = new(xIndex, yIndex);
+            Vector2Int fixedDirection = new();
             if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
             {
                 if (direction.y > 0)
                 {
                     // Up
                     print("Moving Up");
-                    Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex, yIndex + 1));
+                    fixedDirection = new Vector2Int(0, 1);
                 }
                 else
                 {
                     // Down
                     print("Moving Down");
-                    Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex, yIndex - 1));
+                    fixedDirection = new Vector2Int(0, -1);
                 }
             }
             else
@@ -80,22 +83,29 @@ public class Mana : MonoBehaviour
                 {
                     // Right
                     print("Moving Right");
-                    Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex + 1, yIndex));
+                    fixedDirection = new Vector2Int(1, 0);
                 }
                 else
                 {
                     // Left
                     print("Moving Left");
-                    Board.Instance.Swap(new Vector2Int(xIndex, yIndex), new Vector2Int(xIndex - 1, yIndex));
+                    fixedDirection = new Vector2Int(-1, 0);
                 }
             }
-            GameManager.Instance.GridLocked = true;
-            // Detect if match was made, otherwise undo move
-            // if (match was made)
-            //{
-            Board.Instance.Invoke(nameof(Board.Instance.PopMatches), 0.1f);
-            // Lock the grid so no more matches can be made, unless it was a match-4
-            //}
+
+            if (Board.Instance.IsMoveValid(start, start + fixedDirection) || Board.Instance.IsMoveValid(start + fixedDirection, start))
+            {
+                Board.Instance.Swap(start, start + fixedDirection);
+
+
+                GameManager.Instance.GridLocked = true;
+                // Detect if match was made, otherwise undo move
+                // if (match was made)
+                //{
+                Board.Instance.Invoke(nameof(Board.Instance.PopMatches), 0.1f);
+                // Lock the grid so no more matches can be made, unless it was a match-4
+                //}
+            }
         }
         hovered = false;
     }

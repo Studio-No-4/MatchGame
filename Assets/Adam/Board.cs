@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
@@ -139,13 +140,13 @@ public class Board : MonoBehaviour
         Vector2Int direction = end - start;
 
         // If end-adjacent coords are out of bounds
-        if (end.x + 1 >= 8 || end.x - 1 < 0 || end.y + 1 >= 8 || end.y - 1 < 0) return false;
+        //if (end.x + 1 >= 8 || end.x - 1 < 0 || end.y + 1 >= 8 || end.y - 1 < 0) return false;
 
-        print(start.ToString() + " => " + end.ToString());
+        //print(start.ToString() + " => " + end.ToString());
 
         try
         {
-            if (manaBoard[end.x + direction.y, end.y + direction.x].mana.manaType == type)
+            /*if (manaBoard[end.x + direction.y, end.y + direction.x].mana.manaType == type)
             {
                 if (end.x + direction.y * 2 < 8 && end.y + direction.x * 2 < 8)
                     if (manaBoard[end.x + direction.y * 2, end.y + direction.x * 2].mana.manaType == type) return true;
@@ -161,6 +162,24 @@ public class Board : MonoBehaviour
             {
                 if (end.x + direction.x * 2 < 8 && end.y + direction.y * 2 < 8)
                     if (manaBoard[end.x + direction.x * 2, end.y + direction.y * 2].mana.manaType == type) return true;
+            }*/
+            if (ManaMatches(start, end + new Vector2Int(1, 0), type))
+            {
+                if (ManaMatches(start, end + new Vector2Int(2, 0), type)) return true;
+                else if (ManaMatches(start, end + new Vector2Int(-1, 0), type)) return true;
+            }
+            if (ManaMatches(start, end + new Vector2Int(-1, 0), type))
+            {
+                if (ManaMatches(start, end + new Vector2Int(-2, 0), type)) return true;
+            }
+            if (ManaMatches(start, end + new Vector2Int(0, 1), type))
+            {
+                if (ManaMatches(start, end + new Vector2Int(0, 2), type)) return true;
+                else if (ManaMatches(start, end + new Vector2Int(0, -1), type)) return true;
+            }
+            if (ManaMatches(start, end + new Vector2Int(0, -1), type))
+            {
+                if (ManaMatches(start, end + new Vector2Int(0, -2), type)) return true;
             }
             return false;
         }
@@ -168,6 +187,14 @@ public class Board : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool ManaMatches(Vector2Int start, Vector2Int end, ManaType type)
+    {
+        if (start == end) return false;
+        if (end.x >= 0 && end.x < 8)
+            return manaBoard[end.x, end.y].mana.manaType == type;
+        return false;
     }
 
     public List<Vector4> GetAllValidMoves()
@@ -294,13 +321,13 @@ public class Board : MonoBehaviour
             Vector3 end = manaBoard[(int)move.z, (int)move.w].mana.transform.position;
 
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(start, .5f);
+            //Gizmos.DrawWireSphere(start, .5f);
 
-            Gizmos.color = Color.red + Color.yellow;
+            Gizmos.color = Color.red + Color.green / 2f;
             Gizmos.DrawLine(start, end);
 
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(end, .5f);
+            //Gizmos.DrawWireSphere(end, .5f);
         }
     }
 }
