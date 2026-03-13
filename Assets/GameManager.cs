@@ -23,12 +23,11 @@ public class GameManager : MonoBehaviour
 
     public GlobalData GlobalData;
 
-    public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
 
-    public Health Enemy;
 
-    public Dictionary<ManaType, int> PlayerMana = new();
+    public Character Player;
+    public Character Enemy;
 
     private void Awake()
     {
@@ -36,15 +35,20 @@ public class GameManager : MonoBehaviour
         if (GlobalData && !GlobalData.Instance) GlobalData.Instance = GlobalData;
     }
 
+    public static Character CurrentCharacter()
+    {
+        if (Turn % 2 == 1) return Instance.Player;
+        else return Instance.Enemy;
+    }
+    public static Character OpposingCharacter()
+    {
+        if (Turn % 2 == 0) return Instance.Player;
+        else return Instance.Enemy;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayerMana[ManaType.Red] = 0;
-        PlayerMana[ManaType.Green] = 0;
-        PlayerMana[ManaType.Blue] = 0;
-        PlayerMana[ManaType.White] = 0;
-        PlayerMana[ManaType.Black] = 0;
-        PlayerMana[ManaType.Skull] = 0;
         StartCoroutine(TurnRoutine());
     }
 

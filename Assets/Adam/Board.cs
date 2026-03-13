@@ -1,10 +1,6 @@
-
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
 public class Board : MonoBehaviour
 {
@@ -66,7 +62,7 @@ public class Board : MonoBehaviour
                 if (node.mana)
                     node.PopMana();
                 poppedMana++;
-                print(poppedMana);
+                //print(poppedMana);
             }
         }
         if (poppedMana > 0) StartCoroutine(SettleMana());
@@ -127,14 +123,15 @@ public class Board : MonoBehaviour
 
             // Save mana type of Start to reduce code
             type = manaBoard[start.x, start.y].mana.manaType;
+
+            // If start and end match, invalid
+            if (manaBoard[end.x, end.y].mana.manaType == type) return false;
         }
         catch
         {
             return false;
         }
 
-        // If start and end match, invalid
-        if (manaBoard[end.x, end.y].mana.manaType == type) return false;
 
         // Calculate direction from start to end
         Vector2Int direction = end - start;

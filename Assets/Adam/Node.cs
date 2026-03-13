@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class Node
@@ -18,18 +16,18 @@ public class Node
 
     public void PopMana()
     {
-        mana.TargetPos = Camera.main.ScreenToWorldPoint(ManaCounter.Instance.Sliders[(int)mana.manaType].transform.position);
+        mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
         
         //mana.TargetPos = GameManager.Instance.ManaCollection.position;
         mana.SwapSpeed -= Random.Range(0, 50) / 10f;
-        if (GameManager.Instance.PlayerMana.ContainsKey(mana.manaType))
+
+        if (GameManager.Turn % 2 == 1)
         {
-            GameManager.Instance.PlayerMana[mana.manaType] += 1;
-            if (GameManager.Instance.PlayerMana[mana.manaType] > 10) GameManager.Instance.PlayerMana[mana.manaType] = 10;
+            GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
         }
         else
         {
-            GameManager.Instance.PlayerMana[mana.manaType] = 1;
+            GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
         }
         // Arbitrary 1 second delay currently, should fix later
         Object.Destroy(mana.gameObject, 1f);

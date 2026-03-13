@@ -17,14 +17,14 @@ public class SpellUI : MonoBehaviour
     {
         if (CanCast())
         {
-            GameManager.Instance.PlayerMana[ManaCostType] -= CastingCost;
-            GameManager.Instance.Enemy.TakeDamage(1);
+            GameManager.CurrentCharacter().ManaCollection.Mana[ManaCostType] -= CastingCost;
+            GameManager.OpposingCharacter().Health.TakeDamage(1);
         }
     }
 
     public bool CanCast()
     {
-        return GameManager.Instance.PlayerMana[ManaCostType] >= CastingCost;
+        return GameManager.CurrentCharacter().ManaCollection.Mana[ManaCostType] >= CastingCost;
     }
 
     // Update is called once per frame
