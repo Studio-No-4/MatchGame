@@ -189,7 +189,7 @@ public class Board : MonoBehaviour
     public bool ManaMatches(Vector2Int start, Vector2Int end, ManaType type)
     {
         if (start == end) return false;
-        if (end.x >= 0 && end.x < 8)
+        if (end.x >= 0 && end.x < 8 && end.y >= 0 && end.y < 8)
             return manaBoard[end.x, end.y].mana.manaType == type;
         return false;
     }
