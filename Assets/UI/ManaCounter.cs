@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ManaCounter : MonoBehaviour
 {
     public Character Representing;
-    [SerializeField] private List<TMP_Text> Texts;
+    [SerializeField] public List<TMP_Text> Texts;
     public List<Image> Sliders;
 
     [SerializeField] private float Speed = 4f;
