@@ -7,7 +7,7 @@ public class SpellData : ScriptableObject
 {
     public List<Cost> Cost;
     public int Damage;
-    public int Sheild;
+    public int Shield;
     [TextArea]
     public string Description;
 }

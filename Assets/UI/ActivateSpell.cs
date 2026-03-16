@@ -19,7 +19,7 @@ public class ActivateSpell : MonoBehaviour
 
     void Spellshield(int Shield)
     {
-        Spell.Sheild = Shield;
+        Spell.Shield = Shield;
         GameManager.CurrentCharacter().Health.TakeDamage(Shield);
     }
 
