@@ -14,6 +14,11 @@ public class TooltipSystem : MonoBehaviour
 
     }
 
+    public void Start()
+    {
+        Hide();
+    }
+
     public static void Show(string content, string header="")
     {
         current.tooltips.SetText(content, header);
