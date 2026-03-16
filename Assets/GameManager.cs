@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         print("Started Enemy Turn");
         MegaNotification.Notify("Enemy Turn");
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(1.5f);
         List<Vector4> validMoves = Board.Instance.GetAllValidMoves();
         /*foreach (Vector4 move in validMoves)
         {
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.1f);
         print("Enemy Turn Complete");
         Turn++;
     }
