@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         GridLocked = false;
         print("Started Player Turn");
         MegaNotification.Notify("Player Turn");
-        while (!PlayerReady)
+        while (!PlayerReady || !Board.Instance.Stable)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -114,7 +114,11 @@ public class GameManager : MonoBehaviour
         }*/
         Board.Instance.Swap(start, end);
         Board.Instance.PopMatches();
-        yield return new WaitForSeconds(.3f);
+        while (!Board.Instance.Stable)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(.15f);
         print("Enemy Turn Complete");
         Turn++;
     }

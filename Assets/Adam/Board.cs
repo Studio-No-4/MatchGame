@@ -17,6 +17,11 @@ public class Board : MonoBehaviour
     public Node[,] manaBoard;
     public GameObject manaBoardGO;
 
+    /// <summary>
+    /// True if the board is settled
+    /// </summary>
+    public bool Stable = false;
+
     private void Awake()
     {
         Instance = this;
@@ -66,6 +71,7 @@ public class Board : MonoBehaviour
             }
         }
         if (poppedMana > 0) StartCoroutine(SettleMana());
+        else Stable = true;
         return poppedMana;
     }
 
@@ -251,6 +257,7 @@ public class Board : MonoBehaviour
 
     IEnumerator SettleMana()
     {
+        Stable = false;
         print("Settling Mana");
         // Iterate from left to right, bottom to top
         for (int y = 0; y < manaBoard.GetLength(1); y++)
