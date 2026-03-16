@@ -889,6 +889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManaUI: {fileID: 1893918268}
   Health: {fileID: 352107670}
+  Spells:
+  - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
 --- !u!114 &352107670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +1091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManaUI: {fileID: 1527457829}
   Health: {fileID: 385484744}
+  Spells:
+  - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
 --- !u!114 &385484744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3543,7 +3547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.386013, y: 644.86316}
+  m_AnchoredPosition: {x: -55.440723, y: 644.86316}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1395973763

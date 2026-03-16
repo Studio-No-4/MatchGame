@@ -7,6 +7,8 @@ public class Character : MonoBehaviour
     public ManaCounter ManaUI;
     public Health Health;
 
+    public List<SpellData> Spells = new();
+
     // Start is called before the first frame update
     void Start()
     {
