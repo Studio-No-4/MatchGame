@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpellData : ScriptableObject
 {
     public List<Cost> Cost;
+    public List<Damage> Damage;
     [TextArea]
     public string Description;
 }
@@ -20,5 +21,15 @@ public struct Cost
     {
         Type = _type;
         Amount = _amount;
+    }
+}
+[System.Serializable]
+public struct Damage
+{
+    public int Num;
+
+    public Damage(int _amount = 1)
+    {
+        Num = _amount;
     }
 }
