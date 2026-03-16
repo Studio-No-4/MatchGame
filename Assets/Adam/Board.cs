@@ -36,8 +36,8 @@ public class Board : MonoBehaviour
     {
         manaBoard = new Node[width, height];
 
-        spacingX = (float)((width - 1) / 2) ;
-        spacingY = (float)((height - 1) / 2) + 1;
+        spacingX = (float)((width - 1) / 2) + 0.5f;
+        spacingY = (float)((height - 1) / 2) + 0.5f;
 
         for (int y = 0; y < height; y++)
         {
@@ -67,7 +67,6 @@ public class Board : MonoBehaviour
                 if (node.mana)
                     node.PopMana();
                 poppedMana++;
-                //print(poppedMana);
             }
         }
         if (poppedMana > 0) StartCoroutine(SettleMana());
@@ -77,50 +76,6 @@ public class Board : MonoBehaviour
 
     public bool IsMoveValid(Vector2Int start, Vector2Int end)
     {
-        /*
-        Node[,] boardState = (Node[,])manaBoard.Clone();
-
-        try
-        {
-            // Set positions to target positions to prevent bugs
-            (boardState[second.x, second.y].mana.transform.position, boardState[first.x, first.y].mana.transform.position) = (boardState[second.x, second.y].mana.TargetPos, boardState[first.x, first.y].mana.TargetPos);
-            // Set target positions to the other's position
-            (boardState[second.x, second.y].mana.TargetPos, boardState[first.x, first.y].mana.TargetPos) = (boardState[first.x, first.y].mana.transform.position, boardState[second.x, second.y].mana.transform.position);
-            // Swap Mana Indexes
-            (boardState[first.x, first.y].mana.xIndex, boardState[first.x, first.y].mana.yIndex, boardState[second.x, second.y].mana.xIndex, boardState[second.x, second.y].mana.yIndex) = (boardState[second.x, second.y].mana.xIndex, boardState[second.x, second.y].mana.yIndex, boardState[first.x, first.y].mana.xIndex, boardState[first.x, first.y].mana.yIndex);
-            // Swap Mana Objects
-            (boardState[second.x, second.y].mana, boardState[first.x, first.y].mana) = (boardState[first.x, first.y].mana, boardState[second.x, second.y].mana);
-        }
-        catch
-        {
-            print(first.ToString() + " and " + second.ToString());
-            return false;
-        }
-        // Horizontal Matches
-        for (int x = 0; x < boardState.GetLength(0) - 2; x++)
-        {
-            for (int y = 0; y < boardState.GetLength(1); y++)
-            {
-                if (boardState[x, y].mana && boardState[x + 1, y].mana && boardState[x + 2, y].mana)
-                    if (boardState[x, y].mana.manaType == boardState[x + 1, y].mana.manaType && boardState[x + 1, y].mana.manaType == boardState[x + 2, y].mana.manaType)
-                    {
-                        return true;
-                    }
-            }
-        }
-        // Vertical Matches
-        for (int x = 0; x < boardState.GetLength(0); x++)
-        {
-            for (int y = 0; y < boardState.GetLength(1) - 2; y++)
-            {
-                if (boardState[x, y].mana && boardState[x, y + 1].mana && boardState[x, y + 2].mana)
-                    if (boardState[x, y].mana.manaType == boardState[x, y + 1].mana.manaType && boardState[x, y + 1].mana.manaType == boardState[x, y + 2].mana.manaType)
-                    {
-                        return true;
-                    }
-            }
-        }*/
-
         ManaType type;
         // If End is in bounds
         try
@@ -142,30 +97,8 @@ public class Board : MonoBehaviour
         // Calculate direction from start to end
         Vector2Int direction = end - start;
 
-        // If end-adjacent coords are out of bounds
-        //if (end.x + 1 >= 8 || end.x - 1 < 0 || end.y + 1 >= 8 || end.y - 1 < 0) return false;
-
-        //print(start.ToString() + " => " + end.ToString());
-
         try
         {
-            /*if (manaBoard[end.x + direction.y, end.y + direction.x].mana.manaType == type)
-            {
-                if (end.x + direction.y * 2 < 8 && end.y + direction.x * 2 < 8)
-                    if (manaBoard[end.x + direction.y * 2, end.y + direction.x * 2].mana.manaType == type) return true;
-                if (end.x - direction.y >= 0 && end.y - direction.x >= 0)
-                    if (manaBoard[end.x - direction.y, end.y - direction.x].mana.manaType == type) return true;
-            }
-            if (manaBoard[end.x - direction.y, end.y - direction.x].mana.manaType == type)
-            {
-                if (end.x - direction.y * 2 >= 0 && end.y - direction.x * 2 >= 0)
-                    if (manaBoard[end.x - direction.y * 2, end.y - direction.x * 2].mana.manaType == type) return true;
-            }
-            if (manaBoard[end.x + direction.x, end.y + direction.y].mana.manaType == type)
-            {
-                if (end.x + direction.x * 2 < 8 && end.y + direction.y * 2 < 8)
-                    if (manaBoard[end.x + direction.x * 2, end.y + direction.y * 2].mana.manaType == type) return true;
-            }*/
             if (ManaMatches(start, end + new Vector2Int(1, 0), type))
             {
                 if (ManaMatches(start, end + new Vector2Int(2, 0), type)) return true;

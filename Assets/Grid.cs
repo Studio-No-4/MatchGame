@@ -7,6 +7,7 @@ public class Grid : MonoBehaviour
     public Orb OrbPrefab;
     public Transform GridLayout;
     public List<Orb> OrbElements = new();
+
     // Start is called before the first frame update
     void Start()
     {
