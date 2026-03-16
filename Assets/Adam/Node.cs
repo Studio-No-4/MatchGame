@@ -17,7 +17,7 @@ public class Node
     public void PopMana()
     {
         //mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
-        mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Texts[(int)mana.manaType].transform.position);
+        mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)mana.manaType].Counter.transform.position);
 
         //mana.TargetPos = GameManager.Instance.ManaCollection.position;
         mana.SwapSpeed -= Random.Range(0, 50) / 10f;
