@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SpellWidget : MonoBehaviour
 {
+    public SpellListUI List;
     public SpellData Spell;
     public TMP_Text Title;
     public Button Button;
@@ -29,6 +30,11 @@ public class SpellWidget : MonoBehaviour
         Spell = null;
         Button.interactable = false;
         Title.text = "";
+    }
+
+    public void Cast()
+    {
+        Spell.Cast(List.Representing);
     }
 
     // Update is called once per frame

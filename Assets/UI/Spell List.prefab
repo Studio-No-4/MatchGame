@@ -97,6 +97,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell Widget
       objectReference: {fileID: 0}
+    - target: {fileID: 6716682941015697220, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
+      propertyPath: List
+      value: 
+      objectReference: {fileID: 8194534635513211519}
     - target: {fileID: 7604524343293421823, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -206,6 +210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell Widget
       objectReference: {fileID: 0}
+    - target: {fileID: 6716682941015697220, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
+      propertyPath: List
+      value: 
+      objectReference: {fileID: 8194534635513211519}
     - target: {fileID: 7604524343293421823, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -315,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell Widget
       objectReference: {fileID: 0}
+    - target: {fileID: 6716682941015697220, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
+      propertyPath: List
+      value: 
+      objectReference: {fileID: 8194534635513211519}
     - target: {fileID: 7604524343293421823, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -424,6 +436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spell Widget
       objectReference: {fileID: 0}
+    - target: {fileID: 6716682941015697220, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
+      propertyPath: List
+      value: 
+      objectReference: {fileID: 8194534635513211519}
     - target: {fileID: 7604524343293421823, guid: e00e4e8fa6dabed418f6ed9d0777a31f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

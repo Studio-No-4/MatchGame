@@ -15,4 +15,6 @@ MonoBehaviour:
   Cost:
   - Type: 0
     Amount: 7
+  Damage: 6
+  Shield: 0
   Description: Deal 6 damage

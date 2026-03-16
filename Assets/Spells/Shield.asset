@@ -15,4 +15,6 @@ MonoBehaviour:
   Cost:
   - Type: 2
     Amount: 5
+  Damage: 0
+  Shield: 4
   Description: Gain 4 Shield

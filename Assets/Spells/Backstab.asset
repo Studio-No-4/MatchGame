@@ -15,4 +15,6 @@ MonoBehaviour:
   Cost:
   - Type: 4
     Amount: 3
+  Damage: 1
+  Shield: 0
   Description: 1 Damage, take an extra turn

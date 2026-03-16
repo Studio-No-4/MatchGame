@@ -10,6 +10,32 @@ public class SpellData : ScriptableObject
     public int Shield;
     [TextArea]
     public string Description;
+
+    public bool CanCast(Character caster)
+    {
+        foreach (Cost cost in Cost)
+        {
+            if (caster.ManaCollection.Mana[cost.Type] < cost.Amount) return false;
+        }
+        return true;
+    }
+
+    public void Cast(Character caster)
+    {
+        Debug.Log(caster.name + " CASTING SPELL " + name);
+        if (CanCast(caster))
+        {
+            foreach (Cost cost in Cost)
+            {
+                caster.ManaCollection.Mana[cost.Type] -= cost.Amount;
+            }
+            GameManager.OpposingCharacter().Health.TakeDamage(Damage);
+        }
+        else
+        {
+            Debug.LogWarning("Insufficient Mana");
+        }
+    }
 }
 
 [System.Serializable]
