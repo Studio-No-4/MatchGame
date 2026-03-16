@@ -34,13 +34,13 @@ public class Notification : MonoBehaviour
     {
         UpdateVisuals(text);
         Animator.Play("Notify");
-        transform.GetChild(0).gameObject.SetActive(true);
+        //transform.GetChild(0).gameObject.SetActive(true);
         /*while (Animator.GetCurrentAnimatorStateInfo(0).IsName("Notify"))
         {
             
         }*/
         yield return new WaitForSeconds(Animator.GetCurrentAnimatorStateInfo(0).length * Animator.GetCurrentAnimatorStateInfo(0).speed);
-        transform.GetChild(0).gameObject.SetActive(false);
+        //transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void UpdateVisuals(string text="")
