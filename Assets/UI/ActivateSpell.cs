@@ -13,13 +13,13 @@ public class ActivateSpell : MonoBehaviour
 
     void Spelldamage(int Damage)
     {
-        //Spell.Damage = Damage;
+        Spell.Damage = Damage;
         GameManager.OpposingCharacter().Health.TakeDamage(Damage);
     }
 
     void Spellshield(int Shield)
     {
-        //Spell.Sheild = Sheild
+        Spell.Sheild = Shield;
         GameManager.CurrentCharacter().Health.TakeDamage(Shield);
     }
 
