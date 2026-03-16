@@ -16,6 +16,12 @@ public class Node
 
     public void PopMana()
     {
+        if (!GameManager.CurrentCharacter())
+        {
+            Object.Destroy(mana.gameObject);
+            mana = null;
+            return;
+        }
         //mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
         mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)mana.manaType].Counter.transform.position);
 
