@@ -112,6 +112,12 @@ public class Mana : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.Paused)
+        {
+            hovered = false;
+            dragging = false;
+            return;
+        }
         if (hovered && !GameManager.Instance.GridLocked)
         {
             transform.localScale = Vector3.one * 0.1f;
