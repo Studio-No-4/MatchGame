@@ -22,14 +22,12 @@ public class Node
         //mana.TargetPos = GameManager.Instance.ManaCollection.position;
         mana.SwapSpeed -= Random.Range(0, 50) / 10f;
 
-        if (GameManager.Turn % 2 == 1)
+        GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
+        if (mana.manaType == ManaType.Skull)
         {
-            GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
+            GameManager.OpposingCharacter().Health.TakeDamage(1);
         }
-        else
-        {
-            GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
-        }
+        
         // Arbitrary 1 second delay currently, should fix later
         Object.Destroy(mana.gameObject, 1f);
         mana = null;
