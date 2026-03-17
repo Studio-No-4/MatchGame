@@ -192,6 +192,7 @@ MonoBehaviour:
   Spell: {fileID: 0}
   Title: {fileID: 8902468996326987975}
   Button: {fileID: 4707649594443304795}
+  Tooltip: {fileID: 7949837550125621370}
 --- !u!222 &5782345305353428546
 CanvasRenderer:
   m_ObjectHideFlags: 0

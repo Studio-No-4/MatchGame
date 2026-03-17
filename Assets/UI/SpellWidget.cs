@@ -10,6 +10,7 @@ public class SpellWidget : MonoBehaviour
     public SpellData Spell;
     public TMP_Text Title;
     public Button Button;
+    public TooltipTrigger Tooltip;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class SpellWidget : MonoBehaviour
         Button.interactable = true;
         Button.enabled = interactable;
         Title.text = spell.name;
+        Tooltip.content = spell.Description;
+        Tooltip.enabled = true;
     }
 
     public void Hide()
@@ -30,6 +33,7 @@ public class SpellWidget : MonoBehaviour
         Spell = null;
         Button.interactable = false;
         Title.text = "";
+        Tooltip.enabled = false;
     }
 
     public void Cast()

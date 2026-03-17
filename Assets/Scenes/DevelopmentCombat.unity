@@ -1026,6 +1026,7 @@ MonoBehaviour:
   Health: {fileID: 352107670}
   Spells:
   - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
+  - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
 --- !u!114 &352107670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4199,7 +4200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.550148, y: 650.69904}
+  m_AnchoredPosition: {x: -51.550148, y: 666.26135}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1395973763
