@@ -9,7 +9,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Settings.gameObject.SetActive(false);
+        Compenduim.gameObject.SetActive(false);
     }
 
     void Update()
@@ -38,11 +39,12 @@ public class MainMenu : MonoBehaviour
     {
 
     }
-    //Settings
+    //Settings Zone
     public void GameSettings()
     {
         Settings.gameObject.SetActive(true);
     }
+
     //Book of Lore
     public void GameCompedium()
     {
@@ -54,4 +56,5 @@ public class MainMenu : MonoBehaviour
         //print("QUIT");
         Application.Quit();
     }
+
 }
