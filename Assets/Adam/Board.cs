@@ -217,7 +217,7 @@ public class Board : MonoBehaviour
 
                     Vector2 position = new (x, manaBoard.GetLength(1)-1);
                     Mana mana = Instantiate(ManaPrefab, new Vector2(x - spacingX, manaBoard.GetLength(1) - spacingY), Quaternion.identity);
-                    ManaPrefab.SetType(randomIndex);
+                    mana.SetType(randomIndex);
                     mana.TargetPos = position - new Vector2(spacingX, spacingY);
                     mana.SetIndices(x, (int)position.y);
                     manaBoard[x, (int)position.y] = new(true, mana);
