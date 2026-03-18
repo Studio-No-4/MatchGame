@@ -1587,9 +1587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db013e1e04e773546882a907019004dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeTextValue: {fileID: 0}
-  volumeSlider: {fileID: 0}
-  defaultVolume: 100
   Settings: {fileID: 1735784511}
   Compenduim: {fileID: 784257649}
 --- !u!1 &1157573048
