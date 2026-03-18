@@ -23,6 +23,30 @@ public class Mana : MonoBehaviour
 
     public float SwapSpeed = 10f;
 
+    private bool _burning = false;
+    public bool Burning
+    {
+        get => _burning;
+        set
+        {
+            _burning = value;
+            BurningOverlay.SetActive(value);
+        }
+    }
+    [SerializeField] private GameObject BurningOverlay;
+
+    private bool _webbed = false;
+    public bool Webbed
+    {
+        get => _webbed;
+        set
+        {
+            _webbed = value;
+            WebbedOverlay.SetActive(value);
+        }
+    }
+    [SerializeField] private GameObject WebbedOverlay;
+
     public Mana(int _x, int _y)
     {
         xIndex = _x;
