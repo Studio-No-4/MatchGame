@@ -20,7 +20,10 @@ public class Character : MonoBehaviour
 
     public void StartTurn()
     {
-
+        foreach (EffectInstance effect in Effects)
+        {
+            effect.OnStart(this);
+        }
     }
 
     public void EndTurn()

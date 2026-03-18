@@ -249,6 +249,37 @@ public class Board : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get a number of random Mana Nodes, no overlap
+    /// </summary>
+    /// <param name="count">Must be between 1 and 64</param>
+    /// <returns>A list of unique, randomly selected Mana Nodes</returns>
+    public List<Node> GetRandomNodes(int count = 1)
+    {
+        // Guarantee no infinite loops
+        count = Mathf.Min(count, 8 * 8);
+        List<Vector2Int> positions = new();
+        List<Node> Nodes = new();
+        for (int i = 0; i < count; i++)
+        {
+            Vector2Int position = new Vector2Int(Random.Range(0, 8), Random.Range(0, 8));
+            while (positions.Contains(position)) position = new Vector2Int(Random.Range(0, 8), Random.Range(0, 8));
+
+            positions.Add(position);
+            Nodes.Add(manaBoard[position.x, position.y]);
+        }
+        return Nodes;
+    }
+
+    public void BurnXNodes(int x)
+    {
+        List<Node> nodes = GetRandomNodes(x);
+        foreach (Node node in nodes)
+        {
+            node.mana.Burning = true;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         List<Vector4> validMoves = GetAllValidMoves();

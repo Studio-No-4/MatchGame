@@ -15,6 +15,13 @@ public class Effect : ScriptableObject
     public bool ValueStacks = true;
 
     public EffectBehaviour Behaviour;
+
+    public void BurnMana(Character character, int value)
+    {
+        Board.Instance.BurnXNodes(value);
+    }
+
+    public UnityEvent<Character, int> OnStart;
 }
 
 [System.Serializable]
@@ -27,5 +34,10 @@ public struct EffectInstance
     {
         Effect = effect;
         Duration = duration;
+    }
+
+    public void OnStart(Character character)
+    {
+        Effect.OnStart.Invoke(character, Duration);
     }
 }
