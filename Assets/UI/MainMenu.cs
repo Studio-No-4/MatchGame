@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+
+
     public Transform Settings, Compenduim;
     // Start is called before the first frame update
     void Start()
@@ -56,5 +59,6 @@ public class MainMenu : MonoBehaviour
         //print("QUIT");
         Application.Quit();
     }
+
 
 }
