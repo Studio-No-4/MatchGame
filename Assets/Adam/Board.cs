@@ -280,6 +280,14 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void ClearBurn()
+    {
+        foreach (Node node in manaBoard)
+        {
+            node.mana.Burning = false;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         List<Vector4> validMoves = GetAllValidMoves();
