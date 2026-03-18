@@ -33,6 +33,10 @@ public class Node
         {
             GameManager.OpposingCharacter().Health.TakeDamage(1);
         }
+        if (mana.Burning)
+        {
+            GameManager.CurrentCharacter().Health.TakeDamage(1);
+        }
         
         // Arbitrary 1 second delay currently, should fix later
         Object.Destroy(mana.gameObject, 1f);
