@@ -6,13 +6,41 @@ public class Character : MonoBehaviour
     public ManaCollection ManaCollection = new();
     public ManaCounter ManaUI;
     public Health Health;
+    public EffectListUI EffectListUI;
 
     public List<SpellData> Spells = new();
+
+    public List<EffectInstance> Effects = new();
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    public void StartTurn()
+    {
+
+    }
+
+    public void EndTurn()
+    {
+
+    }
+
+    public void ApplyEffect(EffectInstance effect)
+    {
+        for (int i = 0; i < Effects.Count; i++)
+        {
+            if (Effects[i].Effect == effect.Effect)
+            {
+                Effects[i] = new(effect.Effect, Effects[i].Duration + effect.Duration);
+                EffectListUI.UpdateVisuals();
+                return;
+            }
+        }
+        Effects.Add(effect);
+        EffectListUI.UpdateVisuals();
     }
 
     // Update is called once per frame

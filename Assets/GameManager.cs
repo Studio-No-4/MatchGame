@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
         if (Turn % 2 == 1) return Instance.Player;
         else return Instance.Enemy;
     }
+
     public static Character OpposingCharacter()
     {
         if (Turn % 2 == 0) return Instance.Player;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        Player.StartTurn();
         PlayerReady = false;
         GridLocked = false;
         print("Started Player Turn");
@@ -73,12 +75,14 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
+        Player.EndTurn();
         print("Player Turn Complete");
         Turn++;
     }
 
     IEnumerator EnemyTurn()
     {
+        Enemy.StartTurn();
         print("Started Enemy Turn");
         MegaNotification.Notify("Enemy Turn");
         yield return new WaitForSeconds(1.5f);
@@ -97,6 +101,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(.1f);
+        Enemy.EndTurn();
         print("Enemy Turn Complete");
         Turn++;
     }

@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Content/Spell", order = 0)]
 public class SpellData : ScriptableObject
 {
     public List<Cost> Cost;
-    public int Damage;
     public int Shield;
     [TextArea]
     public string Description;
+
+    [Tooltip("True targets the caster, False targets the opponent")]
+    public bool SelfTarget = false;
+    public EffectInstance Effect;
+
+    public UnityEvent OnCast;
 
     public bool CanCast(Character caster)
     {
@@ -18,6 +24,11 @@ public class SpellData : ScriptableObject
             if (caster.ManaCollection.Mana[cost.Type] < cost.Amount) return false;
         }
         return true;
+    }
+
+    public void DealDamage(int Damage = 1)
+    {
+        GameManager.OpposingCharacter().Health.TakeDamage(Damage);
     }
 
     public void Cast(Character caster)
@@ -29,7 +40,18 @@ public class SpellData : ScriptableObject
             {
                 caster.ManaCollection.Mana[cost.Type] -= cost.Amount;
             }
-            GameManager.OpposingCharacter().Health.TakeDamage(Damage);
+            if (Effect.Effect)
+            {
+                if (SelfTarget)
+                {
+                    GameManager.CurrentCharacter().ApplyEffect(Effect);
+                }
+                else
+                {
+                    GameManager.OpposingCharacter().ApplyEffect(Effect);
+                }
+            }
+            OnCast.Invoke();
         }
         else
         {

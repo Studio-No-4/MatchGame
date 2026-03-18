@@ -15,6 +15,20 @@ MonoBehaviour:
   Cost:
   - Type: 0
     Amount: 7
-  Damage: 6
   Shield: 0
   Description: Deal 6 damage
+  OnCast:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000}
+        m_TargetAssemblyTypeName: SpellData, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

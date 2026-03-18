@@ -13,7 +13,7 @@ public class ActivateSpell : MonoBehaviour
 
     void Spelldamage(int Damage)
     {
-        Spell.Damage = Damage;
+        //Spell.Damage = Damage;
         GameManager.OpposingCharacter().Health.TakeDamage(Damage);
     }
 
