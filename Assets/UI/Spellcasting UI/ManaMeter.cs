@@ -1,13 +1,17 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthBar : MonoBehaviour
+public class ManaMeter : MonoBehaviour
 {
+    public int Mana = 0;
     public Image Bar;
-    public Health Health;
+    public TMP_Text Counter;
+
+    public float Speed = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +21,8 @@ public class PlayerHealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Bar.fillAmount = (float)Health.HP / (float)Health.MaxHP;
+
+        Counter.text = Mana.ToString();
+        Bar.fillAmount = Mathf.Lerp(Bar.fillAmount, (float)Mana / 10f, Time.deltaTime * Speed);
     }
 }

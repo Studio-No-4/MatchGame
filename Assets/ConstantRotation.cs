@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaCollectionPoints : MonoBehaviour
+public class ConstantRotation : MonoBehaviour
 {
+    public float Speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,6 @@ public class ManaCollectionPoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(Speed * Vector3.forward * Time.deltaTime);
     }
 }

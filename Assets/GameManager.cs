@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static event Action<int> OnTurnChange;
+    public static event System.Action<int> OnTurnChange;
     private static int _turn = 1;
     public static int Turn
     {
@@ -24,12 +23,11 @@ public class GameManager : MonoBehaviour
 
     public GlobalData GlobalData;
 
-    public Transform ManaCollection;
     [SerializeField] private Notification MegaNotification;
 
-    public Health Enemy;
 
-    public Dictionary<ManaType, int> PlayerMana = new();
+    public Character Player;
+    public Character Enemy;
 
     private void Awake()
     {
@@ -37,15 +35,21 @@ public class GameManager : MonoBehaviour
         if (GlobalData && !GlobalData.Instance) GlobalData.Instance = GlobalData;
     }
 
+    public static Character CurrentCharacter()
+    {
+        if (Turn % 2 == 1) return Instance.Player;
+        else return Instance.Enemy;
+    }
+
+    public static Character OpposingCharacter()
+    {
+        if (Turn % 2 == 0) return Instance.Player;
+        else return Instance.Enemy;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        PlayerMana[ManaType.Red] = 0;
-        PlayerMana[ManaType.Green] = 0;
-        PlayerMana[ManaType.Blue] = 0;
-        PlayerMana[ManaType.White] = 0;
-        PlayerMana[ManaType.Black] = 0;
-        PlayerMana[ManaType.Skull] = 0;
         StartCoroutine(TurnRoutine());
     }
 
@@ -62,23 +66,42 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
+        Player.StartTurn();
         PlayerReady = false;
         GridLocked = false;
         print("Started Player Turn");
         MegaNotification.Notify("Player Turn");
-        while (!PlayerReady)
+        while (!PlayerReady || !Board.Instance.Stable)
         {
             yield return new WaitForEndOfFrame();
         }
+        Player.EndTurn();
         print("Player Turn Complete");
         Turn++;
     }
 
     IEnumerator EnemyTurn()
     {
+        Enemy.StartTurn();
         print("Started Enemy Turn");
         MegaNotification.Notify("Enemy Turn");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        List<Vector4> validMoves = Board.Instance.GetAllValidMoves();
+        /*foreach (Vector4 move in validMoves)
+        {
+            print("VALID MOVE: " + move.ToString());
+        }*/
+        Vector4 selectedMove = validMoves[Random.Range(0, validMoves.Count)];
+        Vector2Int start = new((int)selectedMove.x, (int)selectedMove.y);
+        Vector2Int end = new((int)selectedMove.z, (int)selectedMove.w);
+        Board.Instance.Swap(start, end);
+        Board.Instance.PopMatches();
+        while (!Board.Instance.Stable)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(.1f);
+        Enemy.EndTurn();
         print("Enemy Turn Complete");
         Turn++;
     }

@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
     public virtual void TakeDamage(int damage = 1)
     {
         HP -= damage;
+        print(gameObject.ToString() + " took " + damage.ToString() + " damage, now at " + HP.ToString() + " health");
         if (HP <= 0)
         {
             Die();

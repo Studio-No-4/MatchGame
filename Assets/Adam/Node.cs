@@ -16,19 +16,28 @@ public class Node
 
     public void PopMana()
     {
-        mana.TargetPos = Camera.main.ScreenToWorldPoint(ManaCounter.Instance.Sliders[(int)mana.manaType].transform.position);
-        
+        if (!GameManager.CurrentCharacter())
+        {
+            Object.Destroy(mana.gameObject);
+            mana = null;
+            return;
+        }
+        //mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
+        mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)mana.manaType].Counter.transform.position);
+
         //mana.TargetPos = GameManager.Instance.ManaCollection.position;
         mana.SwapSpeed -= Random.Range(0, 50) / 10f;
-        if (GameManager.Instance.PlayerMana.ContainsKey(mana.manaType))
+
+        GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
+        if (mana.manaType == ManaType.Skull)
         {
-            GameManager.Instance.PlayerMana[mana.manaType] += 1;
-            if (GameManager.Instance.PlayerMana[mana.manaType] > 10) GameManager.Instance.PlayerMana[mana.manaType] = 10;
+            GameManager.OpposingCharacter().Health.TakeDamage(1);
         }
-        else
+        if (mana.Burning)
         {
-            GameManager.Instance.PlayerMana[mana.manaType] = 1;
+            GameManager.CurrentCharacter().Health.TakeDamage(1);
         }
+        
         // Arbitrary 1 second delay currently, should fix later
         Object.Destroy(mana.gameObject, 1f);
         mana = null;
