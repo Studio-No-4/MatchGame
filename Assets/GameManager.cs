@@ -101,6 +101,16 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(.1f);
+        List<SpellData> CastableSpells = new();
+        foreach (SpellData spell in Enemy.Spells)
+        {
+            if (spell.CanCast(Enemy))
+            {
+                CastableSpells.Add(spell);
+            }
+        }
+        if (CastableSpells.Count > 0) CastableSpells[Random.Range(0, CastableSpells.Count)].Cast(Enemy);
+        yield return new WaitForSeconds(.1f);
         Enemy.EndTurn();
         print("Enemy Turn Complete");
         Turn++;
