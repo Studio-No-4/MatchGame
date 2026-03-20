@@ -22,6 +22,9 @@ public class Node
             mana = null;
             return;
         }
+
+        // Layer 3 is the Overlay Layer
+        mana.gameObject.layer = 3;
         //mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
         mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)mana.manaType].Counter.transform.position);
 
