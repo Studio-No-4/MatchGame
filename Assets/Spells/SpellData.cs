@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Spell", menuName = "Content/Spell", order = 0)]
-public class SpellData : ScriptableObject
+public class SpellData : Item
 {
     public List<Cost> Cost;
     public int Shield;
@@ -16,6 +16,12 @@ public class SpellData : ScriptableObject
     public EffectInstance Effect;
 
     public UnityEvent OnCast;
+
+    public override void Claim()
+    {
+        // Needs options for replacing existing spells
+        GameManager.Instance.Player.Spells.Add(this);
+    }
 
     public bool CanCast(Character caster)
     {
