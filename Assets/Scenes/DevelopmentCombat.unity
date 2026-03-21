@@ -1139,6 +1139,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   MaxHP: 10
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2035494355}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lose
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &383435261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1360,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   MaxHP: 10
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2035494355}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Rewards
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &503184124
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,7 +4559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -850.20233, y: -559.6761}
+  m_AnchoredPosition: {x: -68.98785, y: 631.5789}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1395973763
@@ -6037,6 +6067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035494352}
   - component: {fileID: 2035494353}
+  - component: {fileID: 2035494355}
   - component: {fileID: 2035494354}
   m_Layer: 0
   m_Name: GameManager
@@ -6077,6 +6108,7 @@ MonoBehaviour:
   MegaNotification: {fileID: 19691203}
   Player: {fileID: 352107669}
   Enemy: {fileID: 385484743}
+  IgnoreStaticSpells: 0
 --- !u!114 &2035494354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6090,6 +6122,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 608349805}
+--- !u!114 &2035494355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035494351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639fc1cc89d102c4fb9d640bc1aa55eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2075313311
 GameObject:
   m_ObjectHideFlags: 0
