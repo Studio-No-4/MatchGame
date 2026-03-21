@@ -17,6 +17,7 @@ public class SpellListUI : MonoBehaviour
     {
         for (int i = 0; i < Widgets.Count; i++)
         {
+            print(Representing.Spells);
             if (i < Representing.Spells.Count)
             {
                 Widgets[i].SetSpell(Representing.Spells[i], Representing == GameManager.Instance.Player);

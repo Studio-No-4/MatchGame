@@ -29,9 +29,16 @@ public class GameManager : MonoBehaviour
     public Character Player;
     public Character Enemy;
 
+    // Persistent list of player spells
+    public static List<SpellData> PlayerSpells = new();
+    [Tooltip("If true, ignores the static PlayerSpells variable.  Use when PlayerSpells cannot be initialized")]
+    public bool IgnoreStaticSpells = false;
+
     private void Awake()
     {
         Instance = this;
+        // Probably shouldn't be in Awake, but prevents race-condition
+        if (!IgnoreStaticSpells) Player.Spells = PlayerSpells;
         if (GlobalData && !GlobalData.Instance) GlobalData.Instance = GlobalData;
     }
 

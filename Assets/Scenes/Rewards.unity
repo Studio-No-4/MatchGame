@@ -759,6 +759,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardPrefab: {fileID: 3429243815069535668, guid: e074236aca20db44ca768f8a7202bcc6, type: 3}
+  Rewards:
+  - {fileID: 11400000, guid: 7f6e2b42f561f144fb86ccb74dd1bcc3, type: 2}
+  - {fileID: 11400000, guid: d7d9aa93087f0fb40b1e69f2ae60fc4b, type: 2}
+  - {fileID: 11400000, guid: 11b52f3e231d01d4e83315867a15aede, type: 2}
+  - {fileID: 11400000, guid: 4a0c86741c8c65b4ba39b38d8f2ebacb, type: 2}
+  - {fileID: 11400000, guid: c29509257d96c5641b9a8c97ebbf5ac1, type: 2}
+  - {fileID: 11400000, guid: f8e57888a4e0ce74fb798386d1da51e5, type: 2}
+  - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
+  - {fileID: 11400000, guid: a61444b29b22b254985e7f85bad24074, type: 2}
+  - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
+  - {fileID: 11400000, guid: 0d353b3f1e196104993a6530fdf9472c, type: 2}
 --- !u!1001 &4256810840321145704
 PrefabInstance:
   m_ObjectHideFlags: 0
