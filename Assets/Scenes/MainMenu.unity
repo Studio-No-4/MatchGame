@@ -862,6 +862,7 @@ GameObject:
   - component: {fileID: 660781313}
   - component: {fileID: 660781312}
   - component: {fileID: 660781311}
+  - component: {fileID: 660781314}
   m_Layer: 5
   m_Name: CharacterThreeButton
   m_TagString: Untagged
@@ -932,13 +933,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846017791}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
-        m_Mode: 2
+      - m_Target: {fileID: 660781314}
+        m_TargetAssemblyTypeName: LoadPlayableCharacter, Assembly-CSharp
+        m_MethodName: LoadCharacter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 06ba37c5b64b49e4891e039cf32a1bd8, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -982,6 +983,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660781309}
   m_CullTransparentMesh: 1
+--- !u!114 &660781314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660781309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c3772f3272664ab2fd023ef544933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: a3dfc09f2e7efeb49b407eced4007518, type: 2}
+  Name: {fileID: 946798155}
+  description: {fileID: 2124166252}
+  stats: {fileID: 1500111413}
+  Image: {fileID: 1846017791}
+  Health: 0
 --- !u!1 &694093253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &760219184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1996,6 +2015,7 @@ GameObject:
   - component: {fileID: 982360999}
   - component: {fileID: 982360998}
   - component: {fileID: 982360997}
+  - component: {fileID: 982361000}
   m_Layer: 5
   m_Name: CharacterTwoButton
   m_TagString: Untagged
@@ -2066,13 +2086,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846017791}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
-        m_Mode: 2
+      - m_Target: {fileID: 982361000}
+        m_TargetAssemblyTypeName: LoadPlayableCharacter, Assembly-CSharp
+        m_MethodName: LoadCharacter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 19234cf91fe737c4097a15742f2cf6aa, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2116,6 +2136,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982360995}
   m_CullTransparentMesh: 1
+--- !u!114 &982361000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982360995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c3772f3272664ab2fd023ef544933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 1b9e42f29544cc84cafdace2277d2588, type: 2}
+  Name: {fileID: 946798155}
+  description: {fileID: 2124166252}
+  stats: {fileID: 1500111413}
+  Image: {fileID: 1846017791}
+  Health: 0
 --- !u!1 &1157573048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2575,7 @@ GameObject:
   - component: {fileID: 1434608909}
   - component: {fileID: 1434608908}
   - component: {fileID: 1434608907}
+  - component: {fileID: 1434608910}
   m_Layer: 5
   m_Name: CharacterFiveButton
   m_TagString: Untagged
@@ -2607,13 +2646,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846017791}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
-        m_Mode: 2
+      - m_Target: {fileID: 1434608910}
+        m_TargetAssemblyTypeName: LoadPlayableCharacter, Assembly-CSharp
+        m_MethodName: LoadCharacter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 7acc22659163dc844b1e46805c89eb71, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2657,6 +2696,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434608905}
   m_CullTransparentMesh: 1
+--- !u!114 &1434608910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434608905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c3772f3272664ab2fd023ef544933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 71e30c1dfde8f2a448bde2ac04d604df, type: 2}
+  Name: {fileID: 946798155}
+  description: {fileID: 2124166252}
+  stats: {fileID: 1500111413}
+  Image: {fileID: 1846017791}
+  Health: 0
 --- !u!1 &1500111411
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3272,7 @@ GameObject:
   - component: {fileID: 2034906004}
   - component: {fileID: 2034906003}
   - component: {fileID: 2034906002}
+  - component: {fileID: 2034906005}
   m_Layer: 5
   m_Name: CharacterFourButton
   m_TagString: Untagged
@@ -3285,13 +3343,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1846017791}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_sprite
-        m_Mode: 2
+      - m_Target: {fileID: 2034906005}
+        m_TargetAssemblyTypeName: LoadPlayableCharacter, Assembly-CSharp
+        m_MethodName: LoadCharacter
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 6c6fb197c39de6a41b9953c9867b8abe, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3335,6 +3393,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034906000}
   m_CullTransparentMesh: 1
+--- !u!114 &2034906005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034906000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265c3772f3272664ab2fd023ef544933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 1a163da9276e0cc4a835515f542cdc38, type: 2}
+  Name: {fileID: 946798155}
+  description: {fileID: 2124166252}
+  stats: {fileID: 1500111413}
+  Image: {fileID: 1846017791}
+  Health: 0
 --- !u!1 &2048214907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3500,8 +3576,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2086745051}
         m_TargetAssemblyTypeName: LoadPlayableCharacter, Assembly-CSharp
-        m_MethodName: LoadHealth
-        m_Mode: 3
+        m_MethodName: LoadCharacter
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3561,6 +3637,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: a32a63af1ff28204ea166743a660bb26, type: 2}
+  Name: {fileID: 946798155}
+  description: {fileID: 2124166252}
+  stats: {fileID: 1500111413}
+  Image: {fileID: 1846017791}
+  Health: 0
 --- !u!1 &2124166250
 GameObject:
   m_ObjectHideFlags: 0

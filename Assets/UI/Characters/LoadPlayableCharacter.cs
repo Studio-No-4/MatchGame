@@ -1,34 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadPlayableCharacter : MonoBehaviour
 {
 
     public PlayerableCharacters character;
-    public void LoadName(string name)
+    public TextMeshProUGUI Name, description, stats;
+    public Image Image;
+    public int Health;
+
+
+    public void Update()
     {
-        character.name = name;
+        
     }
 
-    public void LoadImage(Sprite image)
+    public void LoadCharacter()
     {
-        character.Image = image;
+        Name.text = character.name;
+        Image.sprite = character.Image;
+        stats.text = character.Description;
+        character.Health = Health;
+
     }
 
-    public void LoadDescription(string description)
-    {
-        character.Description = description;
-    }
-
-    public void LoadHealth(int health)
-    {
-        character.Health = health;
-    }
-
-    //public void LoadSpell(string character)
-    //{
-    //Character = character;
-    //}
 }

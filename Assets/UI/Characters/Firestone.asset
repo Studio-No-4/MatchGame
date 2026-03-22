@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Firestone
   Image: {fileID: 21300000, guid: 7acc22659163dc844b1e46805c89eb71, type: 3}
-  Health: 30
-  Description: Fire Mage of Orthos
+  Health: 0
+  Description: Born is orthos
