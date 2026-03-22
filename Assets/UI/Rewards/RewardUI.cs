@@ -23,6 +23,7 @@ public class RewardUI : MonoBehaviour
     public void Claim()
     {
         Reward.Claim();
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
