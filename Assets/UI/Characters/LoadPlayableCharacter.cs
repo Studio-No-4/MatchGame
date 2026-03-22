@@ -14,6 +14,12 @@ public class LoadPlayableCharacter : MonoBehaviour
     public int Health;
 
 
+    public void Start()
+    {
+        LoadCharacter();
+    }
+
+
     public void Update()
     {
         
