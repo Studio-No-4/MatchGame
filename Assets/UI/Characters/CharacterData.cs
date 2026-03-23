@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "PlayableCharacter", menuName = "Content/Character", order = 3)]
-public class PlayerableCharacters : ScriptableObject
+public class CharacterData : ScriptableObject
 {
     //name of character
     public string Name;
@@ -17,6 +15,7 @@ public class PlayerableCharacters : ScriptableObject
     public int Health;
 
     //description of character
+    [TextArea]
     public string Description;
 
     //Load the Spell

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LoadPlayableCharacter : MonoBehaviour
 {
 
-    public PlayerableCharacters character;
+    public CharacterData character;
     public TextMeshProUGUI Name, description, stats;
     public Image Image;
     public int Health;
