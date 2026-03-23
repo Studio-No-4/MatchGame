@@ -5,20 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayableCharacter", menuName = "Content/Character", order = 3)]
 public class CharacterData : ScriptableObject
 {
-    //name of character
-    public string Name;
-
-    //image of character
+    //Image of character
     public Sprite Image;
 
     //Stats of character
     public int Health;
 
-    //description of character
+    //Description of character
     [TextArea]
     public string Description;
 
-    //Load the Spell
-    public SpellData SpellData;
+    //Default starting spells
+    public List<SpellData> StartingSpells = new();
 
 }

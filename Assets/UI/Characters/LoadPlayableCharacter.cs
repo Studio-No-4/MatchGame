@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,7 +30,8 @@ public class LoadPlayableCharacter : MonoBehaviour
         Image.sprite = character.Image;
         stats.text = character.Description;
         character.Health = Health;
-
+        Game.PlayerCharacter = character;
+        GameManager.PlayerSpells = new List<SpellData>(character.StartingSpells);
     }
 
 }

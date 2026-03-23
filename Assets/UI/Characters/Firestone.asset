@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361a7799feb6ece469e30a293df46f7a, type: 3}
   m_Name: Firestone
   m_EditorClassIdentifier: 
-  Name: Firestone
   Image: {fileID: 21300000, guid: 7acc22659163dc844b1e46805c89eb71, type: 3}
   Health: 0
   Description: Born is orthos
   SpellData: {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
+  StartingSpells:
+  - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}

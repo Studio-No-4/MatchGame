@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 649a7a6c30d43c4479ad509d7d6578eb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GlobalData: {fileID: 11400000, guid: 5f6f8ab7aa7f69b49a04981f7fc1e662, type: 2}
+  - MegaNotification: {instanceID: 0}
+  - Player: {instanceID: 0}
+  - Enemy: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 361a7799feb6ece469e30a293df46f7a, type: 3}
-  m_Name: DarkShadow
+  m_Name: Bright Light
   m_EditorClassIdentifier: 
-  Name: DarkShadow
-  Image: {fileID: 21300000, guid: 19234cf91fe737c4097a15742f2cf6aa, type: 3}
-  Health: 35
-  Description: 'A night demon '
-  SpellData: {fileID: 11400000, guid: d7d9aa93087f0fb40b1e69f2ae60fc4b, type: 2}
+  Image: {fileID: 21300000, guid: 6c6fb197c39de6a41b9953c9867b8abe, type: 3}
+  Health: 25
+  Description: Born is Yellowstone
+  SpellData: {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
+  StartingSpells:
+  - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
