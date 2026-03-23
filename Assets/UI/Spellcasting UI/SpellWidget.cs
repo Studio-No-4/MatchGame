@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class SpellWidget : MonoBehaviour
     public TMP_Text Title;
     public Button Button;
     public TooltipTrigger Tooltip;
+    public ManaCostUI CostUI;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class SpellWidget : MonoBehaviour
         Title.text = spell.name;
         Tooltip.content = spell.Description;
         Tooltip.enabled = true;
+        CostUI.SetVisuals(spell.Cost);
     }
 
     public void Hide()
@@ -34,6 +37,7 @@ public class SpellWidget : MonoBehaviour
         Button.interactable = false;
         Title.text = "";
         Tooltip.enabled = false;
+        CostUI.Hide();
     }
 
     public void Cast()
