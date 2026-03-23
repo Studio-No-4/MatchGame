@@ -19,4 +19,7 @@ public class PlayerableCharacters : ScriptableObject
     //description of character
     public string Description;
 
+    //Load the Spell
+    public SpellData SpellData;
+
 }

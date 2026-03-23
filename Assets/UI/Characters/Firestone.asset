@@ -16,3 +16,4 @@ MonoBehaviour:
   Image: {fileID: 21300000, guid: 7acc22659163dc844b1e46805c89eb71, type: 3}
   Health: 0
   Description: Born is orthos
+  SpellData: {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
