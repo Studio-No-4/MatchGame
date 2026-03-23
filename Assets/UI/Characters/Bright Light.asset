@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Bright Light
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 6c6fb197c39de6a41b9953c9867b8abe, type: 3}
-  Health: 25
+  Health: 40
   Description: Born is Yellowstone
-  SpellData: {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
   StartingSpells:
   - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}

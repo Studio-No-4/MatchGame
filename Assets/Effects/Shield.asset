@@ -9,18 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b708a8e9ec64de4d939b759200faa0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3042276b57b6f4546a3d6590d676cc5f, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  Cost:
-  - Type: 2
-    Amount: 5
-  Shield: 4
-  Description: Gain 4 Shield
-  SelfTarget: 1
-  Effect:
-    Effect: {fileID: 11400000, guid: bb9e68a9cbb96914b86b9307899b0280, type: 2}
-    Duration: 4
-  OnCast:
+  Icon: {fileID: 21300040, guid: df2e7fe8157bd444ca6e6d6209410efd, type: 3}
+  Type: 0
+  DurationStacks: 0
+  ValueStacks: 1
+  Behaviour: {fileID: 0}
+  OnStart:
     m_PersistentCalls:
       m_Calls: []
