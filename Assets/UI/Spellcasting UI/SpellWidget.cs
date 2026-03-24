@@ -26,8 +26,8 @@ public class SpellWidget : MonoBehaviour
         Button.interactable = true;
         Button.enabled = interactable;
         Title.text = spell.name;
-        Tooltip.content = spell.Description;
-        Tooltip.enabled = true;
+        if (Tooltip) Tooltip.content = spell.Description;
+        if (Tooltip) Tooltip.enabled = true;
         CostUI.SetVisuals(spell.Cost);
     }
 
@@ -36,7 +36,7 @@ public class SpellWidget : MonoBehaviour
         Spell = null;
         Button.interactable = false;
         Title.text = "";
-        Tooltip.enabled = false;
+        if (Tooltip) Tooltip.enabled = false;
         CostUI.Hide();
     }
 
