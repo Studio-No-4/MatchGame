@@ -13,7 +13,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateMap();
+        if (StartingNode == null) GenerateMap();
+        InstantiateVisuals();
     }
 
     public void GenerateMap()
@@ -30,7 +31,10 @@ public class MapManager : MonoBehaviour
             }
             NodeLayers.Add(layer);
         }
+    }
 
+    public void InstantiateVisuals()
+    {
         for (int i = 0; i < NodeLayers.Count; i++)
         {
             Transform newLayer = Instantiate(LayerPrefab, transform);
