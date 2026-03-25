@@ -36,8 +36,7 @@ public class Board : MonoBehaviour
     {
         foreach (Node node in manaBoard)
         {
-            Destroy(node.mana);
-            //Destroy(ManaPrefab.gameObject);
+            Destroy(node.mana.gameObject);
         }
         InitializeBoard();
     }
