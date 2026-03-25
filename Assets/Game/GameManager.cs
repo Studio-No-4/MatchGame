@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
         // If there are no valid moves, reset the board
         while (validMoves.Count == 0)
         {
+            //print("reset");
             Board.Instance.ResetBoard();
             while (!Board.Instance.Stable) yield return new WaitForEndOfFrame();
         }

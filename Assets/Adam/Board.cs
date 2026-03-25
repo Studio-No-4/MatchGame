@@ -29,7 +29,7 @@ public class Board : MonoBehaviour
 
     void Start()
     {
-        InitializeBoard();   
+        InitializeBoard();
     }
 
     public void ResetBoard()
@@ -37,6 +37,7 @@ public class Board : MonoBehaviour
         foreach (Node node in manaBoard)
         {
             Destroy(node.mana);
+            //Destroy(ManaPrefab.gameObject);
         }
         InitializeBoard();
     }
