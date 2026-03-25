@@ -238,8 +238,9 @@ public class Board : MonoBehaviour
         yield break;
     }
 
-    public void Swap(Vector2Int first, Vector2Int second)
+    public IEnumerator Swap(Vector2Int first, Vector2Int second)
     {
+        //Stable = false;
         try
         {
             // Set positions to target positions to prevent bugs
@@ -253,8 +254,9 @@ public class Board : MonoBehaviour
         }
         catch
         {
-            print(first.ToString() + " and " + second.ToString());
+            Debug.LogWarning("Error while swapping: " + first.ToString() + " and " + second.ToString());
         }
+        yield return new WaitForSeconds(0.5f);
     }
 
     /// <summary>

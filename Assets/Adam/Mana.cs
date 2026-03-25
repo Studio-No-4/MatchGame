@@ -119,14 +119,12 @@ public class Mana : MonoBehaviour
 
             if (Board.Instance.IsMoveValid(start, start + fixedDirection) || Board.Instance.IsMoveValid(start + fixedDirection, start))
             {
-                Board.Instance.Swap(start, start + fixedDirection);
-
-
+                StartCoroutine(Board.Instance.Swap(start, start + fixedDirection));
                 GameManager.Instance.GridLocked = true;
                 // Detect if match was made, otherwise undo move
                 // if (match was made)
                 //{
-                Board.Instance.Invoke(nameof(Board.Instance.PopMatches), 0.1f);
+                Board.Instance.Invoke(nameof(Board.Instance.PopMatches), 0.5f);
                 // Lock the grid so no more matches can be made, unless it was a match-4
                 //}
             }

@@ -129,7 +129,10 @@ public class GameManager : MonoBehaviour
         Vector4 selectedMove = validMoves[Random.Range(0, validMoves.Count)];
         Vector2Int start = new((int)selectedMove.x, (int)selectedMove.y);
         Vector2Int end = new((int)selectedMove.z, (int)selectedMove.w);
-        Board.Instance.Swap(start, end);
+        StartCoroutine(Board.Instance.Swap(start, end));
+        //while (!Board.Instance.Stable) yield return new WaitForEndOfFrame();
+
+        yield return new WaitForSeconds(0.5f);
         Board.Instance.PopMatches();
         while (!Board.Instance.Stable)
         {
