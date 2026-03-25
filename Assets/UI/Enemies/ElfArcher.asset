@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElfArcher
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 584a26a12fb73224bb90d386a727f76a, type: 3}
-  Health: 20
+  Health: 17
   Description: Elf archer, greatest sniper in the...west?
   StartingSpells:
   - {fileID: 11400000, guid: 4a0c86741c8c65b4ba39b38d8f2ebacb, type: 2}

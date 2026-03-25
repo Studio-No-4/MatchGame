@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Cow
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: ea6802e427c9c6c449fc75bdbfa991cf, type: 3}
-  Health: 20
-  Description: 'The basic Human peasant
-
-'
+  Health: 25
+  Description: Big, made of beef
   StartingSpells:
   - {fileID: 11400000, guid: 7f6e2b42f561f144fb86ccb74dd1bcc3, type: 2}
