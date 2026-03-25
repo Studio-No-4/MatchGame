@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b2eec7383c31a74e8804879fbffc567, type: 3}
-  m_Name: FairyAmbusher
+  m_Name: ElfArcher
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 584a26a12fb73224bb90d386a727f76a, type: 3}
-  Health: 15
-  Description: A darting and dashing foe, gonna shank yeh in the eye mate!
+  Image: {fileID: 21300000, guid: 2279dda700cecdd47ac242b77520bac1, type: 3}
+  Health: 17
+  Description: Elf archer, greatest sniper in the...west?
   StartingSpells:
-  - {fileID: 11400000, guid: d7d9aa93087f0fb40b1e69f2ae60fc4b, type: 2}
+  - {fileID: 11400000, guid: 4a0c86741c8c65b4ba39b38d8f2ebacb, type: 2}

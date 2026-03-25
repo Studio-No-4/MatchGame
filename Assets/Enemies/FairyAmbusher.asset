@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b2eec7383c31a74e8804879fbffc567, type: 3}
-  m_Name: DwarfWarrior
+  m_Name: FairyAmbusher
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 584a26a12fb73224bb90d386a727f76a, type: 3}
-  Health: 25
-  Description: Angry Dwarf
+  Image: {fileID: 21300000, guid: 0d0afbc6d28607044a56366283dd3d3e, type: 3}
+  Health: 15
+  Description: A darting and dashing foe, gonna shank yeh in the eye mate!
   StartingSpells:
-  - {fileID: 11400000, guid: f8e57888a4e0ce74fb798386d1da51e5, type: 2}
+  - {fileID: 11400000, guid: d7d9aa93087f0fb40b1e69f2ae60fc4b, type: 2}
