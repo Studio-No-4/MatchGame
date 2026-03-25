@@ -8,8 +8,6 @@ public class SpellData : Item
 {
     public List<Cost> Cost;
     public int Shield;
-    [TextArea]
-    public string Description;
 
     [Tooltip("True targets the caster, False targets the opponent")]
     public bool SelfTarget = false;
