@@ -20,8 +20,11 @@ public class EffectUI : MonoBehaviour
     {
         if (Icon) Icon.sprite = effect.Effect.Icon;
         if (DurationText) DurationText.text = effect.Duration.ToString();
-        if (Tooltip) Tooltip.header = effect.Effect.name;
-        if (Tooltip) Tooltip.content = effect.Effect.Description;
+        if (Tooltip)
+        {
+            Tooltip.header = effect.Effect.name;
+            Tooltip.content = effect.Effect.Description.Replace("[x]", effect.Duration.ToString());
+        }
     }
 
     // Update is called once per frame

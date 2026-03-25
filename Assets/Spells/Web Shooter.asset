@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Web Shooter
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Description: Destroy all Blue pips
+  Description: Inflict 3 Webbed
   Cost:
   - Type: 4
     Amount: 4
