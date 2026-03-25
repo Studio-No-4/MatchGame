@@ -17,7 +17,17 @@ public class SpellWidget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+    }
+
+    public void LockOnTurn(int turn)
+    {
+        Button.interactable = (turn % 2 != 0);
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.Instance) GameManager.OnTurnChange -= LockOnTurn;
     }
 
     public void SetSpell(SpellData spell, bool interactable = true)
@@ -29,6 +39,7 @@ public class SpellWidget : MonoBehaviour
         if (Tooltip) Tooltip.content = spell.Description;
         if (Tooltip) Tooltip.enabled = true;
         CostUI.SetVisuals(spell.Cost);
+        if (List.Representing == GameManager.Instance.Player) GameManager.OnTurnChange += LockOnTurn;
     }
 
     public void Hide()

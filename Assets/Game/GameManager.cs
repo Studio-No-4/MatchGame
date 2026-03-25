@@ -34,12 +34,22 @@ public class GameManager : MonoBehaviour
     [Tooltip("If true, ignores the static PlayerSpells variable.  Use when PlayerSpells cannot be initialized")]
     public bool IgnoreStaticSpells = false;
 
+    public EnemyData EnemyData;
+    public List<EnemyData> EnemyTypes = new();
+
     private void Awake()
     {
         Instance = this;
         // Probably shouldn't be in Awake, but prevents race-condition
         if (!IgnoreStaticSpells) Player.Spells = PlayerSpells;
         if (GlobalData && !GlobalData.Instance) GlobalData.Instance = GlobalData;
+
+        // Randomize enemy and set relevant values
+        EnemyData = EnemyTypes[Random.Range(0, EnemyTypes.Count)];
+        Enemy.Health.MaxHP = EnemyData.Health;
+        Enemy.Health.HP = EnemyData.Health;
+        Enemy.Spells = EnemyData.StartingSpells;
+        Enemy.CharacterArt.sprite = EnemyData.Image;
     }
 
     public static Character CurrentCharacter()

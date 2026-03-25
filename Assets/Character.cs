@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Character : MonoBehaviour
     public ManaCounter ManaUI;
     public Health Health;
     public EffectListUI EffectListUI;
+    public Image CharacterArt;
 
     public List<SpellData> Spells = new();
 

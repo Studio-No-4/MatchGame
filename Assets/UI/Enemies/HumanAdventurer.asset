@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2eec7383c31a74e8804879fbffc567, type: 3}
   m_Name: HumanAdventurer
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300098, guid: bcf98d13a2b4a5a4080d6c06665f7db8, type: 3}
+  Image: {fileID: 21300000, guid: 584a26a12fb73224bb90d386a727f76a, type: 3}
   Health: 20
   Description: 'The basic Human peasant
 
 '
-  StartingSpells: []
+  StartingSpells:
+  - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
