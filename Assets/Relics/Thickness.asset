@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac9ebfe7d69aa468bbe3f9822c1399, type: 3}
   m_Name: Thickness
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300106, guid: f8a89fd5b8b8ad841be53c4a922ec673, type: 3}
   Description: Lines are 3x thick

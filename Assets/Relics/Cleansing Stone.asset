@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac9ebfe7d69aa468bbe3f9822c1399, type: 3}
   m_Name: Cleansing Stone
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300040, guid: 417d83b56ee7ab14397236e57718d9cf, type: 3}
   Description: Remove (or reduce) a random (negative?) status effect you have by
     (1? half?)

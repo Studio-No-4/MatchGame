@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac9ebfe7d69aa468bbe3f9822c1399, type: 3}
   m_Name: Pummel
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300052, guid: df2e7fe8157bd444ca6e6d6209410efd, type: 3}
   Description: Every 3rd spell deals double damage

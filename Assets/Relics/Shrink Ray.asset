@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac9ebfe7d69aa468bbe3f9822c1399, type: 3}
   m_Name: Shrink Ray
   m_EditorClassIdentifier: 
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300108, guid: 40c750c5b1cfac346916a52013feaafd, type: 3}
   Description: Enemies have 10% less health
