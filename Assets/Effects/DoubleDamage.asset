@@ -14,17 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300052, guid: df2e7fe8157bd444ca6e6d6209410efd, type: 3}
   Type: 0
-  Duration: 1
-  Value: 1
-  OnApply:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRemove:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTurnEnd:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTurnStart:
+  Description: All damage is doubled
+  DurationStacks: 1
+  ValueStacks: 1
+  Behaviour: {fileID: 0}
+  OnStart:
     m_PersistentCalls:
       m_Calls: []

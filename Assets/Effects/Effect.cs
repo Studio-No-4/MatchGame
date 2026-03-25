@@ -9,6 +9,8 @@ public class Effect : ScriptableObject
     public Sprite Icon;
     public enum Category { Buff, Debuff, Other }
     public Category Type = Category.Other;
+    [Multiline]
+    public string Description;
 
     [Tooltip("-1 for endless duration")]
     public bool DurationStacks = true;

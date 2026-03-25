@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300040, guid: df2e7fe8157bd444ca6e6d6209410efd, type: 3}
   Type: 0
+  Description: Absorbs damage before health
   DurationStacks: 0
   ValueStacks: 1
   Behaviour: {fileID: 0}

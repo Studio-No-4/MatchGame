@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 2356451351859098782}
   - component: {fileID: 5810002246846230659}
   - component: {fileID: 3661417649411228288}
+  - component: {fileID: 2467251313601076389}
   m_Layer: 5
   m_Name: Effect Icon
   m_TagString: Untagged
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 3661417649411228288}
   DurationText: {fileID: 3414195782714244962}
+  Tooltip: {fileID: 2467251313601076389}
 --- !u!222 &5810002246846230659
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -225,3 +227,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2467251313601076389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494734454923483449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5c65d20a9cef04db5afde872de0355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 
