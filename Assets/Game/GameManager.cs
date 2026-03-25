@@ -80,6 +80,13 @@ public class GameManager : MonoBehaviour
         MegaNotification.Notify("Player Turn");
         while (!PlayerReady || !Board.Instance.Stable)
         {
+            List<Vector4> validMoves = Board.Instance.GetAllValidMoves();
+            // If there are no valid moves, reset the board
+            while (validMoves.Count == 0)
+            {
+                Board.Instance.ResetBoard();
+                while (!Board.Instance.Stable) yield return new WaitForEndOfFrame();
+            }
             yield return new WaitForEndOfFrame();
         }
         Player.EndTurn();
@@ -98,6 +105,12 @@ public class GameManager : MonoBehaviour
         {
             print("VALID MOVE: " + move.ToString());
         }*/
+        // If there are no valid moves, reset the board
+        while (validMoves.Count == 0)
+        {
+            Board.Instance.ResetBoard();
+            while (!Board.Instance.Stable) yield return new WaitForEndOfFrame();
+        }
         Vector4 selectedMove = validMoves[Random.Range(0, validMoves.Count)];
         Vector2Int start = new((int)selectedMove.x, (int)selectedMove.y);
         Vector2Int end = new((int)selectedMove.z, (int)selectedMove.w);

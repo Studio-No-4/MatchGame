@@ -32,6 +32,15 @@ public class Board : MonoBehaviour
         InitializeBoard();   
     }
 
+    public void ResetBoard()
+    {
+        foreach (Node node in manaBoard)
+        {
+            Destroy(node.mana);
+        }
+        InitializeBoard();
+    }
+
     void InitializeBoard()
     {
         manaBoard = new Node[width, height];
