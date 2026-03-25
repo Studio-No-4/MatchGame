@@ -26,6 +26,16 @@ public class Effect : ScriptableObject
         Board.Instance.WebXNodes(value);
     }
 
+    public void ApplyToEnemy(int duration)
+    {
+        GameManager.OpposingCharacter().ApplyEffect(new EffectInstance(this, duration));
+    }
+
+    public void ApplyToSelf(int duration)
+    {
+        GameManager.CurrentCharacter().ApplyEffect(new EffectInstance(this, duration));
+    }
+
     public UnityEvent<Character, int> OnStart;
 }
 

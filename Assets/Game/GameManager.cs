@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         Player.StartTurn();
+        foreach (RelicData relic in Game.Relics)
+        {
+            relic.OnTurnStart.Invoke();
+        }
         PlayerReady = false;
         GridLocked = false;
         print("Started Player Turn");
