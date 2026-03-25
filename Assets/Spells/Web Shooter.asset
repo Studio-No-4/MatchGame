@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b708a8e9ec64de4d939b759200faa0e, type: 3}
-  m_Name: Burn
+  m_Name: Web Shooter
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Description: Apply 3 Burn
+  Description: Destroy all Blue pips
   Cost:
-  - Type: 0
+  - Type: 4
     Amount: 4
   Shield: 0
   SelfTarget: 0
   Effect:
-    Effect: {fileID: 11400000, guid: c353ef38396de5042bf8a13c6ff54ac8, type: 2}
+    Effect: {fileID: 11400000, guid: fc4cd4ff0db83854aa3198ebc5f4424c, type: 2}
     Duration: 3
   OnCast:
     m_PersistentCalls:

@@ -18,7 +18,7 @@ public class SpellData : Item
     public override void Claim()
     {
         // Needs options for replacing existing spells
-        GameManager.Instance.Player.Spells.Add(this);
+        GameManager.PlayerSpells.Add(this);
     }
 
     public bool CanCast(Character caster)

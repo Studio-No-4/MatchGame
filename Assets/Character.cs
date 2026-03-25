@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
 
     public void EndTurn()
     {
-        Board.Instance.ClearBurn();
+        Board.Instance.ClearNodeStates();
     }
 
     public void ApplyEffect(EffectInstance effect)

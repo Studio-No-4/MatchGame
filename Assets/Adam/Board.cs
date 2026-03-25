@@ -93,9 +93,8 @@ public class Board : MonoBehaviour
             return false;
         }
 
-
-        // Calculate direction from start to end
-        Vector2Int direction = end - start;
+        if (manaBoard[start.x, start.y].mana.Webbed) return false;
+        if (manaBoard[end.x, end.y].mana.Webbed) return false;
 
         try
         {
@@ -271,6 +270,15 @@ public class Board : MonoBehaviour
         return Nodes;
     }
 
+    public void WebXNodes(int x)
+    {
+        List<Node> nodes = GetRandomNodes(x);
+        foreach (Node node in nodes)
+        {
+            node.mana.Webbed = true;
+        }
+    }
+
     public void BurnXNodes(int x)
     {
         List<Node> nodes = GetRandomNodes(x);
@@ -280,11 +288,11 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void ClearBurn()
+    public void ClearNodeStates()
     {
         foreach (Node node in manaBoard)
         {
-            node.mana.Burning = false;
+            node.mana.ClearStates();
         }
     }
 

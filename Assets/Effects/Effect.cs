@@ -21,6 +21,11 @@ public class Effect : ScriptableObject
         Board.Instance.BurnXNodes(value);
     }
 
+    public void WebMana(Character character, int value)
+    {
+        Board.Instance.WebXNodes(value);
+    }
+
     public UnityEvent<Character, int> OnStart;
 }
 

@@ -134,6 +134,12 @@ public class Mana : MonoBehaviour
         hovered = false;
     }
 
+    public void ClearStates()
+    {
+        Burning = false;
+        Webbed = false;
+    }
+
     private void Update()
     {
         if (PauseMenu.Paused)
