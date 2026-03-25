@@ -12,7 +12,7 @@ public class CharacterData : ScriptableObject
     public int Health;
 
     //Description of character
-    [TextArea]
+    [TextArea] 
     public string Description;
 
     //Default starting spells
