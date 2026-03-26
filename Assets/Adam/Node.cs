@@ -48,8 +48,15 @@ public class Node
             {
                 for (int j = Mathf.Max(0, tempMana.yIndex - 1); j < Mathf.Min(8, tempMana.yIndex + 2); j++)
                 {
-                    if (Board.Instance.manaBoard[i, j].mana) Board.Instance.manaBoard[i, j].PopMana();
-                    Debug.Log("BOMBING " + i.ToString() + " " + j.ToString() + " from " + tempMana.xIndex.ToString() + " " + tempMana.yIndex.ToString());
+                    try
+                    {
+                        if (Board.Instance.manaBoard[i, j].mana) Board.Instance.manaBoard[i, j].PopMana();
+                        Debug.Log("BOMBING " + i.ToString() + " " + j.ToString() + " from " + tempMana.xIndex.ToString() + " " + tempMana.yIndex.ToString());
+                    }
+                    catch (System.Exception e)
+                    {
+                        Debug.LogWarning(e);
+                    }
                 }
             }
         }

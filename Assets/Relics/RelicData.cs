@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "Relic", menuName = "Content/Relic", order = 0)]
 public class RelicData : Item
 {
+    public UnityEvent OnCombatStart;
     public UnityEvent OnTurnStart;
 
     public override void Claim()

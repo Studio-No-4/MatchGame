@@ -15,6 +15,7 @@ public class RelicDataEditor : Editor
         //GUILayout.Label(texture);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Description"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("OnTurnStart"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("OnCombatStart"));
         //EditorGUILayout.EnumPopup(, new());
         serializedObject.ApplyModifiedProperties();
     }

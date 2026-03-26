@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(TurnRoutine());
+
+        foreach (RelicData relic in Game.Relics)
+        {
+            relic.OnCombatStart.Invoke();
+        }
     }
 
     IEnumerator TurnRoutine()

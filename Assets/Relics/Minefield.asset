@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300006, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
   Description: Spawn 5 bombs on combat start
-  OnTurnStart:
+  OnCombatStart:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2032969429643831618, guid: c6c924299e3d8db47bf7a394c5a6edad, type: 3}
@@ -29,3 +29,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnTurnStart:
+    m_PersistentCalls:
+      m_Calls: []
