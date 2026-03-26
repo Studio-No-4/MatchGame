@@ -286,7 +286,7 @@ public class Board : MonoBehaviour
         List<Node> nodes = GetRandomNodes(x);
         foreach (Node node in nodes)
         {
-            node.mana.Webbed = true;
+            node.mana.Webbed.Status = true;
         }
     }
 
@@ -295,7 +295,16 @@ public class Board : MonoBehaviour
         List<Node> nodes = GetRandomNodes(x);
         foreach (Node node in nodes)
         {
-            node.mana.Burning = true;
+            node.mana.Burning.Status = true;
+        }
+    }
+
+    public void SpawnXBombs(int x)
+    {
+        List<Node> nodes = GetRandomNodes(x);
+        foreach (Node node in nodes)
+        {
+            node.mana.Bomb.Status = true;
         }
     }
 

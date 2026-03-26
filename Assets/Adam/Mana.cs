@@ -23,29 +23,41 @@ public class Mana : MonoBehaviour
 
     public float SwapSpeed = 10f;
 
-    private bool _burning = false;
-    public bool Burning
-    {
-        get => _burning;
-        set
-        {
-            _burning = value;
-            BurningOverlay.SetActive(value);
-        }
-    }
-    [SerializeField] private GameObject BurningOverlay;
+    public Overlay Webbed = new();
+    public Overlay Burning = new();
+    public Overlay Bomb = new();
 
-    private bool _webbed = false;
-    public bool Webbed
+    [System.Serializable]
+    public class Overlay
     {
-        get => _webbed;
-        set
+        private bool _status = false;
+        public bool Status
         {
-            _webbed = value;
-            WebbedOverlay.SetActive(value);
+            get => _status;
+            set
+            {
+                _status = value;
+                overlay.SetActive(value);
+            }
+        }
+        [SerializeField] private GameObject overlay;
+
+        public static bool operator ==(Overlay obj, bool value) => obj.Status == value;
+        public static bool operator !=(Overlay obj, bool value) => obj.Status != value;
+        public override bool Equals(object obj)
+        {
+            if (obj is Overlay other)
+            {
+                return this == other;
+            }
+            return false;
+        }
+        public override int GetHashCode() => Status.GetHashCode();
+        public static implicit operator bool(Overlay instance)
+        {
+            return instance.Status;
         }
     }
-    [SerializeField] private GameObject WebbedOverlay;
 
     public Mana(int _x, int _y)
     {
@@ -134,8 +146,8 @@ public class Mana : MonoBehaviour
 
     public void ClearStates()
     {
-        Burning = false;
-        Webbed = false;
+        Burning.Status = false;
+        Webbed.Status = false;
     }
 
     private void Update()
