@@ -17,33 +17,44 @@ public class Node
 
     public void PopMana()
     {
+        Mana tempMana = mana;
+        mana = null;
         if (!GameManager.CurrentCharacter())
         {
-            Object.Destroy(mana.gameObject);
-            mana = null;
+            Object.Destroy(tempMana.gameObject);
             return;
         }
 
         // Layer 3 is the Overlay Layer
-        mana.gameObject.layer = 3;
+        tempMana.gameObject.layer = 3;
         //mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.Sliders[(int)mana.manaType].transform.position);
-        mana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)mana.manaType].Counter.transform.position);
+        tempMana.TargetPos = Camera.main.ScreenToWorldPoint(GameManager.CurrentCharacter().ManaUI.ManaMeters[(int)tempMana.manaType].Counter.transform.position);
 
         //mana.TargetPos = GameManager.Instance.ManaCollection.position;
-        mana.SwapSpeed -= Random.Range(0, 50) / 10f;
+        tempMana.SwapSpeed -= Random.Range(0, 50) / 10f;
 
-        GameManager.CurrentCharacter().ManaCollection.AddMana(mana.manaType);
-        if (mana.manaType == ManaType.Skull)
+        GameManager.CurrentCharacter().ManaCollection.AddMana(tempMana.manaType);
+        if (tempMana.manaType == ManaType.Skull)
         {
             GameManager.OpposingCharacter().Health.TakeDamage(1);
         }
-        if (mana.Burning)
+        if (tempMana.Burning)
         {
             GameManager.CurrentCharacter().Health.TakeDamage(1);
         }
+        if (tempMana.Bomb)
+        {
+            for (int i = Mathf.Max(0, tempMana.xIndex - 1); i < Mathf.Min(8, tempMana.xIndex + 2); i++)
+            {
+                for (int j = Mathf.Max(0, tempMana.yIndex - 1); j < Mathf.Min(8, tempMana.yIndex + 2); j++)
+                {
+                    if (Board.Instance.manaBoard[i, j].mana) Board.Instance.manaBoard[i, j].PopMana();
+                    Debug.Log("BOMBING " + i.ToString() + " " + j.ToString() + " from " + tempMana.xIndex.ToString() + " " + tempMana.yIndex.ToString());
+                }
+            }
+        }
         
         // Arbitrary 1 second delay currently, should fix later
-        Object.Destroy(mana.gameObject, 1f);
-        mana = null;
+        Object.Destroy(tempMana.gameObject, 1f);
     }
 }

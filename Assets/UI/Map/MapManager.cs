@@ -39,7 +39,7 @@ public class MapManager : MonoBehaviour
         {
             Transform newLayer = Instantiate(LayerPrefab, transform);
             newLayer.SetAsFirstSibling();
-            print("LAYER " + i.ToString());
+            //print("LAYER " + i.ToString());
             for (int j = 0; j < NodeLayers[i].Count; j++)
             {
                 print(NodeLayers[i][j]);
