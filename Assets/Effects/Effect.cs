@@ -28,6 +28,11 @@ public class Effect : ScriptableObject
         Board.Instance.WebXNodes(value);
     }
 
+    public void ReflectDamage(Character character, Character source, int amount)
+    {
+        if (source) source.Health.TakeDamage(amount);
+    }
+
     public void ApplyToEnemy(int duration)
     {
         GameManager.OpposingCharacter().ApplyEffect(new EffectInstance(this, duration));
@@ -39,6 +44,7 @@ public class Effect : ScriptableObject
     }
 
     public UnityEvent<Character, int> OnStart;
+    public UnityEvent<Character, Character, int> OnTakeDamage;
 }
 
 [System.Serializable]
@@ -56,5 +62,10 @@ public struct EffectInstance
     public void OnStart(Character character)
     {
         Effect.OnStart.Invoke(character, Duration);
+    }
+
+    public void OnTakeDamage(Character character, Character source, int damage)
+    {
+        Effect.OnTakeDamage.Invoke(character, source, Duration);
     }
 }

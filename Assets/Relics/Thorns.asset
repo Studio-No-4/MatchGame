@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Thorns
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300004, guid: bcf98d13a2b4a5a4080d6c06665f7db8, type: 3}
-  Description: Whenever you take damage, deal 1 damage back (thorns)
+  Description: Whenever you take spell damage, deal 1 damage back (thorns)
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnStart:
     m_PersistentCalls:
       m_Calls:

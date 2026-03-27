@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56ac9ebfe7d69aa468bbe3f9822c1399, type: 3}
-  m_Name: Cleansing Stone
+  m_Script: {fileID: 11500000, guid: 3042276b57b6f4546a3d6590d676cc5f, type: 3}
+  m_Name: SpellDamage
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300040, guid: 417d83b56ee7ab14397236e57718d9cf, type: 3}
-  Description: Reduce a random debuff by 1 at the end of each turn
-  OnCombatStart:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTurnStart:
+  Icon: {fileID: 21300052, guid: 40c750c5b1cfac346916a52013feaafd, type: 3}
+  Type: 0
+  Description: Increases the damage of all spells
+  DurationStacks: 0
+  ValueStacks: 1
+  Behaviour: {fileID: 0}
+  OnStart:
     m_PersistentCalls:
       m_Calls: []

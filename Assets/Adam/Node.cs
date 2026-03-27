@@ -36,11 +36,11 @@ public class Node
         GameManager.CurrentCharacter().ManaCollection.AddMana(tempMana.manaType);
         if (tempMana.manaType == ManaType.Skull)
         {
-            GameManager.OpposingCharacter().Health.TakeDamage(1);
+            GameManager.OpposingCharacter().TakeDamage(1);
         }
         if (tempMana.Burning)
         {
-            GameManager.CurrentCharacter().Health.TakeDamage(1);
+            GameManager.CurrentCharacter().TakeDamage(1);
         }
         if (tempMana.Bomb)
         {

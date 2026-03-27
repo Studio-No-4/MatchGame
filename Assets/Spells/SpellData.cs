@@ -32,7 +32,7 @@ public class SpellData : Item
 
     public void DealDamage(int Damage = 1)
     {
-        GameManager.OpposingCharacter().Health.TakeDamage(Damage);
+        GameManager.OpposingCharacter().TakeDamage(GameManager.CurrentCharacter(), Damage);
     }
 
     public void Cast(Character caster)

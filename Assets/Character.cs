@@ -33,6 +33,26 @@ public class Character : MonoBehaviour
         Board.Instance.ClearNodeStates();
     }
 
+    // Generic Take Damage function
+    public void TakeDamage(int damage)
+    {
+        Health.TakeDamage(damage);
+        foreach (EffectInstance effect in Effects)
+        {
+            effect.OnTakeDamage(this, null, damage);
+        }
+    }
+
+    // Take Damage from a character source
+    public void TakeDamage(Character source, int damage)
+    {
+        Health.TakeDamage(damage);
+        foreach (EffectInstance effect in Effects)
+        {
+            effect.OnTakeDamage(this, source, damage);
+        }
+    }
+
     public void ApplyEffect(EffectInstance effect)
     {
         for (int i = 0; i < Effects.Count; i++)

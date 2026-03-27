@@ -39,7 +39,7 @@ public class SpellWidget : MonoBehaviour
         if (Tooltip) Tooltip.content = spell.Description;
         if (Tooltip) Tooltip.enabled = true;
         CostUI.SetVisuals(spell.Cost);
-        if (List.Representing == GameManager.Instance.Player) GameManager.OnTurnChange += LockOnTurn;
+        if (GameManager.Instance && List.Representing == GameManager.Instance.Player) GameManager.OnTurnChange += LockOnTurn;
     }
 
     public void Hide()
