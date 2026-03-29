@@ -993,6 +993,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d366b8e4a091d8489dbef926a176841, type: 2}
   - {fileID: 11400000, guid: 11b52f3e231d01d4e83315867a15aede, type: 2}
   Effects: []
+  DamageBuff: 0
+  SpellCostModifier: 0
 --- !u!114 &352107670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1216,6 +1218,8 @@ MonoBehaviour:
   Spells:
   - {fileID: 11400000, guid: 71ad6419ebde14845a81c808772c0d87, type: 2}
   Effects: []
+  DamageBuff: 0
+  SpellCostModifier: 0
 --- !u!114 &385484744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4185,7 +4189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -881.2955, y: -571.336}
+  m_AnchoredPosition: {x: -1492.0363, y: 179.9392}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1395973763
@@ -5832,10 +5836,6 @@ PrefabInstance:
     - target: {fileID: 4133790806677906731, guid: c7ad0cf7dae55a4459df20eaaf4d8947, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6504830292508923535, guid: c7ad0cf7dae55a4459df20eaaf4d8947, type: 3}
-      propertyPath: Tooltip
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7150238850909158338, guid: c7ad0cf7dae55a4459df20eaaf4d8947, type: 3}
       propertyPath: m_AnchorMax.y
